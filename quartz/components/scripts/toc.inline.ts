@@ -1,18 +1,3 @@
-const observer = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    const slug = entry.target.id
-    const tocEntryElements = document.querySelectorAll(`a[data-for="${slug}"]`)
-    const windowHeight = entry.rootBounds?.height
-    if (windowHeight && tocEntryElements.length > 0) {
-      if (entry.boundingClientRect.y < windowHeight) {
-        tocEntryElements.forEach((tocEntryElement) => tocEntryElement.classList.add("in-view"))
-      } else {
-        tocEntryElements.forEach((tocEntryElement) => tocEntryElement.classList.remove("in-view"))
-      }
-    }
-  }
-})
-
 function toggleToc(this: HTMLElement) {
   this.classList.toggle("collapsed")
   this.setAttribute(
@@ -22,6 +7,34 @@ function toggleToc(this: HTMLElement) {
   const content = this.nextElementSibling as HTMLElement | undefined
   if (!content) return
   content.classList.toggle("collapsed")
+}
+
+function updateTocHighlight() {
+  const headers = Array.from(
+    document.querySelectorAll<HTMLElement>("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]"),
+  )
+  const tocEntryElements = document.querySelectorAll("a[data-for]")
+
+  tocEntryElements.forEach((tocEntryElement) => tocEntryElement.classList.remove("in-view"))
+
+  if (headers.length === 0 || tocEntryElements.length === 0) {
+    return
+  }
+
+  const activationLine = window.innerHeight * 0.3
+  let activeSlug = headers[0].id
+
+  for (const header of headers) {
+    if (header.getBoundingClientRect().top <= activationLine) {
+      activeSlug = header.id
+    } else {
+      break
+    }
+  }
+
+  document
+    .querySelectorAll(`a[data-for="${activeSlug}"]`)
+    .forEach((tocEntryElement) => tocEntryElement.classList.add("in-view"))
 }
 
 function setupToc() {
@@ -36,9 +49,12 @@ function setupToc() {
 
 document.addEventListener("nav", () => {
   setupToc()
+  updateTocHighlight()
 
-  // update toc entry highlighting
-  observer.disconnect()
-  const headers = document.querySelectorAll("h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]")
-  headers.forEach((header) => observer.observe(header))
+  window.addEventListener("scroll", updateTocHighlight, { passive: true })
+  window.addEventListener("resize", updateTocHighlight)
+  window.addCleanup(() => {
+    window.removeEventListener("scroll", updateTocHighlight)
+    window.removeEventListener("resize", updateTocHighlight)
+  })
 })
