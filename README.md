@@ -1,17 +1,17 @@
-# Quartz v4
+# JVC Notes
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+Personal GitHub Pages site for primary-market investment notes, company observations, and research memos.
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+The site is built with Quartz v4 and published through GitHub Pages from the `v4` branch.
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+## Local commands
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+```bash
+npm ci
+npx quartz build
+npx quartz build --serve
+```
 
-## Sponsors
+## Content
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+Investment notes live in `content/blogs/`. The site is intentionally kept as a blog, without the previous book-note archive.
