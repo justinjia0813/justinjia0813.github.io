@@ -151,6 +151,8 @@ article {
 article p,
 article li {
   line-height: 1.9rem;
+  text-align: justify;
+  text-justify: inter-ideograph;
 }
 
 article h2 {
@@ -222,6 +224,27 @@ article blockquote p {
   color: var(--darkgray);
   font-size: 1.08rem;
   line-height: 1.9rem;
+}
+
+.jvc-home-link a {
+  color: var(--secondary);
+  font-family: var(--jvc-sans-font);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.jvc-home-section {
+  border-top: 1px solid var(--jvc-border);
+  padding-top: 2.2rem;
+}
+
+.jvc-home-section-head h2 {
+  margin: 0;
+  color: var(--dark);
+  font-family: var(--jvc-display-font);
+  font-size: 2rem;
+  line-height: 1.25;
 }
 
 .jvc-hero-actions,
@@ -414,6 +437,10 @@ footer {
   .jvc-hero-title {
     font-size: 2.8rem;
     line-height: 1.08;
+  }
+
+  .jvc-home-section-head h2 {
+    font-size: 1.65rem;
   }
 
   .memo-dek {
