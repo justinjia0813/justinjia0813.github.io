@@ -21,6 +21,11 @@ description: 个人一级市场投资记录，记录行业判断、公司观察�
     </div>
     <div class="memo-grid">
       <article class="memo-card">
+        <p class="memo-card-kicker">2026-07-06</p>
+        <h3><a href="./blogs/最长的一段路：从天使轮到A轮">最长的一段路：从天使轮到A轮</a></h3>
+        <p>为什么从天使轮到A轮的时间，往往比从A轮到IPO还要漫长。</p>
+      </article>
+      <article class="memo-card">
         <p class="memo-card-kicker">2026-06-21</p>
         <h3><a href="./blogs/AI时代的两层机会">AI时代的两层机会</a></h3>
         <p>从标准化智能到专家智能，拆解 AI 应用公司真正的第二层机会。</p>
