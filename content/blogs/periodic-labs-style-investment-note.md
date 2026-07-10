@@ -2,7 +2,7 @@
 title: 从 Periodic Labs 这类公司看 AI 科学家的创业窗口
 date: 2026-06-13
 description: 记录 AI 科学家创业窗口背后的三个变量：模型能力、实验自动化和资本密度。
-draft: true
+draft: false
 aliases:
   - memos/periodic-labs-style-investment-note
 ---

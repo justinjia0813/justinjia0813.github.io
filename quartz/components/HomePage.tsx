@@ -1,123 +1,101 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
-import { FullSlug, SimpleSlug, resolveRelative } from "../util/path"
-import { QuartzPluginData } from "../plugins/vfile"
-import { byDateAndAlphabetical } from "./PageList"
-import { Date as DateComponent, getDate } from "./Date"
-import { allTools } from "./data/tools"
 
 export default (() => {
-  const HomePage: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
+  const HomePage: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
     if (fileData.slug !== "index") {
       return null
     }
 
-    // 文章：仅取 blogs/ 下已发布文章，按日期倒序
-    const articles: QuartzPluginData[] = allFiles
-      .filter((file) => file.slug?.startsWith("blogs/"))
-      .sort(byDateAndAlphabetical(cfg))
-
     return (
-      <div class="jvc-home">
-        <section class="jvc-home-hero">
-          <p class="jvc-kicker">justin@universe ~ zsh</p>
-          <h1 class="jvc-hero-title">Justin / JVC Notes</h1>
-          <p class="jvc-hero-copy">
-            一级市场投资记录 · 持续递归优化物质、能量、信息三大本源
-          </p>
-          <div class="jvc-hero-separator">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
-          <nav class="jvc-home-nav">
-            <a href="#articles">
-              <span class="nav-num">01</span>文章
-            </a>
-            <a href="#tools">
-              <span class="nav-num">02</span>工具
-            </a>
-            <a href="#community">
-              <span class="nav-num">03</span>社区
-            </a>
+      <div class="jvc-terminal-home">
+        <section class="jvc-terminal-hero">
+          <div class="jvc-terminal-prompt">justin@universe ~ zsh</div>
+          <button class="jvc-terminal-hint" type="button">
+            Press Enter to Launch
+          </button>
+          <div class="jvc-terminal-arrow" aria-hidden="true">
+            ↓
+          </div>
+        </section>
+
+        <main class="jvc-terminal-main" tabindex={-1}>
+          <nav class="jvc-terminal-nav" aria-label="主页导航">
+            <a href="#home">01主页</a>
+            <a href="#works">02作品集</a>
+            <a href="#os">03我的OS</a>
           </nav>
-        </section>
 
-        <section class="jvc-home-section" id="articles">
-          <div class="jvc-section-head">
-            <span class="jvc-section-num">01</span>
-            <h2 class="jvc-section-title">文章</h2>
-            <p class="jvc-section-prompt">ls blogs/</p>
-          </div>
-          <div class="jvc-article-grid">
-            {articles.map((page) => {
-              const title = page.frontmatter?.title ?? "未命名"
-              const desc = page.frontmatter?.description ?? ""
-              const date = getDate(cfg, page)
-              return (
-                <a
-                  class="jvc-article-card"
-                  href={resolveRelative(fileData.slug!, page.slug!)}
-                >
-                  {date && (
-                    <span class="jvc-article-meta">
-                      <DateComponent date={date} locale={cfg.locale} />
-                    </span>
-                  )}
-                  <h3 class="jvc-article-title">{title}</h3>
-                  {desc && <p class="jvc-article-desc">{desc}</p>}
-                </a>
-              )
-            })}
-          </div>
-          <a class="jvc-article-more" href="./blogs/">
-            查看全部文章 →
-          </a>
-        </section>
+          <section class="jvc-terminal-section jvc-terminal-identity" id="home">
+            <h1>Justin / JVC Notes</h1>
+            <p>一级市场投资记录 · 持续递归优化物质、能量、信息三大本源</p>
+            <div class="jvc-terminal-separator">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+          </section>
 
-        <section class="jvc-home-section" id="tools">
-          <div class="jvc-section-head">
-            <span class="jvc-section-num">02</span>
-            <h2 class="jvc-section-title">工具</h2>
-            <p class="jvc-section-prompt">ls tools/</p>
-          </div>
-          <div class="jvc-tool-grid">
-            {allTools.map((tool) => (
-              <a class="jvc-tool-card" href={tool.url} target="_blank" rel="noopener">
-                <div class="jvc-tool-head">
-                  <h3 class="jvc-tool-name">{tool.name}</h3>
-                  <span class="jvc-tool-lang">{tool.lang}</span>
-                </div>
-                <p class="jvc-tool-desc">{tool.desc}</p>
-                <span class="jvc-tool-link">github.com/justinjia0813 →</span>
-              </a>
-            ))}
-          </div>
-        </section>
+          <section class="jvc-terminal-section" id="works">
+            <div class="jvc-terminal-section-title">ls works/</div>
+            <div class="jvc-terminal-grid">
+              <article class="jvc-terminal-card">
+                <div class="dim">dim_01</div>
+                <h3>AI 投资笔记</h3>
+                <p>记录 AI 应用层、宏观判断与第二层机会的投资思考。</p>
+                <a href="./blogs/">进入 Blogs</a>
+                <a href="./blogs/AI时代的两层机会">两层机会</a>
+              </article>
 
-        <section class="jvc-home-section" id="community">
-          <div class="jvc-section-head">
-            <span class="jvc-section-num">03</span>
-            <h2 class="jvc-section-title">社区</h2>
-            <p class="jvc-section-prompt">$ cat community.md</p>
-          </div>
-          <div class="jvc-community-grid">
-            <div class="jvc-os">
-              <div class="jvc-os-item">
+              <article class="jvc-terminal-card">
+                <div class="dim">dim_02</div>
+                <h3>AI for Materials</h3>
+                <p>用一级市场视角拆解 AI 材料公司的投资框架与关键证据。</p>
+                <a href="./blogs/ai-materials-investment-thesis">阅读笔记</a>
+              </article>
+
+              <article class="jvc-terminal-card">
+                <div class="dim">dim_03</div>
+                <h3>AI 科学家创业</h3>
+                <p>从 Periodic Labs 这类公司看 AI 科学家创业的窗口与变量。</p>
+                <a href="./blogs/periodic-labs-style-investment-note">阅读笔记</a>
+              </article>
+
+              <article class="jvc-terminal-card">
+                <div class="dim">dim_04</div>
+                <h3>投资框架与方法论</h3>
+                <p>否定之否定：用三段论理解 AI 繁荣的物理、资本与应用三角博弈。</p>
+                <a href="./blogs/否定之否定：AI宏观三段论">阅读笔记</a>
+              </article>
+            </div>
+          </section>
+
+          <section class="jvc-terminal-section" id="os">
+            <div class="jvc-terminal-section-title">$ cat my-os.md</div>
+            <div class="jvc-terminal-os-list">
+              <div class="jvc-terminal-os-item">
                 <h3>RESEARCH & THINK</h3>
                 <p>行业判断 · 宏观框架 · 反方验证 · 第一性原理</p>
               </div>
-              <div class="jvc-os-item">
+              <div class="jvc-terminal-os-item">
                 <h3>ANALYZE & OPERATE</h3>
                 <p>公司观察 · 投资备忘 · 复盘 · 决策记录</p>
               </div>
             </div>
-            <div class="jvc-contact">
-              <p class="jvc-contact-prompt">$ cat contact.md</p>
-              <a href="mailto:justinjia0813@gmail.com">📮 justinjia0813@gmail.com</a>
+          </section>
+
+          <footer class="jvc-terminal-footer">
+            <div class="prompt">$ cat contact.md</div>
+            <p>
+              📮 <a href="mailto:justinjia0813@gmail.com">justinjia0813@gmail.com</a>
+            </p>
+            <p>
+              🐙{" "}
               <a href="https://github.com/justinjia0813" target="_blank" rel="noopener">
-                🐙 github.com/justinjia0813
+                github.com/justinjia0813
               </a>
-              <p class="jvc-quote">“找到你喜欢的事，然后让它杀死你。” — Bukowski</p>
-            </div>
-          </div>
-          <p class="jvc-copyright">© 2026 Justin / JVC Notes · Built with AI & attitude</p>
-        </section>
+            </p>
+            <p class="jvc-terminal-quote">“找到你喜欢的事，然后让它杀死你。” — Bukowski</p>
+            <p class="jvc-terminal-copyright">
+              © 2026 Justin / JVC Notes · Built with AI & attitude
+            </p>
+          </footer>
+        </main>
       </div>
     )
   }

@@ -2,7 +2,7 @@
 title: AI for Materials：早期材料智能公司的投资框架
 date: 2026-06-13
 description: 用一级市场视角拆解 AI for Materials 公司的投资判断、关键证据、商业入口和风险。
-draft: true
+draft: false
 aliases:
   - memos/ai-materials-investment-thesis
 ---
