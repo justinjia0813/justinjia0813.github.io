@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url"
 import { allTools } from "./data/tools"
 
 const componentPath = fileURLToPath(new URL("./HomePage.tsx", import.meta.url))
+const stylesPath = fileURLToPath(new URL("../styles/custom.scss", import.meta.url))
 
 test("v2 homepage keeps the articles, tools, and community modules", () => {
   const component = readFileSync(componentPath, "utf8")
@@ -18,4 +19,12 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
     allTools.map((tool) => tool.name),
     ["jvc-analyst", "digital-person-skill", "oh-my-waist"],
   )
+})
+
+test("option C adds terminal card and focus accents without changing the three modules", () => {
+  const styles = readFileSync(stylesPath, "utf8")
+
+  assert.match(styles, /\.jvc-article-card \{[^}]*border: 1px solid var\(--jvc-border\)/)
+  assert.match(styles, /\.jvc-article-card:hover \{[^}]*transform: translateY\(-3px\)/)
+  assert.match(styles, /\.jvc-home a:focus-visible/)
 })
