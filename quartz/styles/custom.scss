@@ -321,21 +321,35 @@ body[data-slug="index"] article {
 .jvc-article-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 3rem;
-  row-gap: 0;
+  gap: 1.5rem;
 }
 
 .jvc-article-card {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  padding: 2rem 0;
-  border-top: 1px solid var(--jvc-hairline);
+  padding: 1.6rem;
+  border: 1px solid var(--jvc-border);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--light) 60%, var(--dark) 0%);
   text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.jvc-article-card:hover {
+  border-color: var(--secondary);
+  transform: translateY(-3px);
 }
 
 .jvc-article-card:hover .jvc-article-title {
   color: var(--secondary);
+}
+
+.jvc-home a:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 4px;
 }
 
 .jvc-article-meta {
