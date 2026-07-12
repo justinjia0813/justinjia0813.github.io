@@ -2,6 +2,7 @@ import assert from "node:assert/strict"
 import { readFileSync } from "node:fs"
 import test from "node:test"
 import { fileURLToPath } from "node:url"
+import { allTools } from "./data/tools"
 
 const componentPath = fileURLToPath(new URL("./HomePage.tsx", import.meta.url))
 const stylesPath = fileURLToPath(new URL("../styles/custom.scss", import.meta.url))
@@ -25,13 +26,14 @@ test("terminal homepage source contract renders the fixed landing page on index 
   assert.match(component, /jvc-terminal-hint/)
   assert.match(component, /href="#home"/)
   assert.match(component, /href="#works"/)
+  assert.match(component, /href="#tools"/)
   assert.match(component, /href="#os"/)
   assert.match(component, /href="\.\/blogs\/"/)
   assert.match(component, /href="\.\/blogs\/ai-materials-investment-thesis"/)
   assert.match(component, /href="\.\/blogs\/periodic-labs-style-investment-note"/)
   assert.match(component, /href="\.\/blogs\/否定之否定：AI宏观三段论"/)
   assert.match(component, /dim_04/)
-  assert.doesNotMatch(component, /allFiles|allTools|jvc-article-grid|jvc-tool-grid/)
+  assert.doesNotMatch(component, /allFiles|jvc-article-grid/)
 
   assert.match(styles, /body\[data-slug="index"\]/)
   assert.match(styles, /\.jvc-terminal-grid/)
@@ -46,4 +48,15 @@ test("terminal homepage source contract renders the fixed landing page on index 
   )
   assert.match(materials, /^draft: false$/m)
   assert.match(periodicLabs, /^draft: false$/m)
+})
+
+test("tools section displays only the three selected projects", () => {
+  const component = readFileSync(componentPath, "utf8")
+
+  assert.match(component, /id="tools"/)
+  assert.match(component, /allTools\.map/)
+  assert.deepEqual(
+    allTools.map((tool) => tool.name),
+    ["jvc-analyst", "digital-person-skill", "oh-my-waist"],
+  )
 })
