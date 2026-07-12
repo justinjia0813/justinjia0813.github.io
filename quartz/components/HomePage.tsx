@@ -1,4 +1,5 @@
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
+import { allTools } from "./data/tools"
 
 export default (() => {
   const HomePage: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
@@ -22,7 +23,8 @@ export default (() => {
           <nav class="jvc-terminal-nav" aria-label="主页导航">
             <a href="#home">01主页</a>
             <a href="#works">02作品集</a>
-            <a href="#os">03我的OS</a>
+            <a href="#tools">03工具</a>
+            <a href="#os">04我的OS</a>
           </nav>
 
           <section class="jvc-terminal-section jvc-terminal-identity" id="home">
@@ -62,6 +64,22 @@ export default (() => {
                 <p>否定之否定：用三段论理解 AI 繁荣的物理、资本与应用三角博弈。</p>
                 <a href="./blogs/否定之否定：AI宏观三段论">阅读笔记</a>
               </article>
+            </div>
+          </section>
+
+          <section class="jvc-terminal-section" id="tools">
+            <div class="jvc-terminal-section-title">ls tools/</div>
+            <div class="jvc-terminal-grid">
+              {allTools.map((tool) => (
+                <article class="jvc-terminal-card">
+                  <div class="dim">{tool.lang}</div>
+                  <h3>{tool.name}</h3>
+                  <p>{tool.desc}</p>
+                  <a href={tool.url} target="_blank" rel="noopener">
+                    查看项目
+                  </a>
+                </article>
+              ))}
             </div>
           </section>
 
