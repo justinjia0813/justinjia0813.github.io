@@ -1,6 +1,6 @@
 ---
 title: AI for Materials 的终局，不是软件公司
-date: 2026-06-13
+date: 2026-07-16
 description: 真正值得投资的，是能够把材料研发推到中试，并让交付经验持续复利的平台。
 draft: false
 aliases:
