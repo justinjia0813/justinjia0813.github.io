@@ -14,6 +14,7 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
   assert.match(component, /id="articles"/)
   assert.match(component, /id="tools"/)
   assert.match(component, /id="community"/)
+  assert.equal((component.match(/项目\/工具/g) ?? []).length, 2)
   assert.doesNotMatch(component, /jvc-terminal-home/)
   assert.deepEqual(
     allTools.map((tool) => tool.name),

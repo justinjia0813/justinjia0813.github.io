@@ -28,7 +28,7 @@ export default (() => {
               <span class="nav-num">01</span>文章
             </a>
             <a href="#tools">
-              <span class="nav-num">02</span>工具
+              <span class="nav-num">02</span>项目/工具
             </a>
             <a href="#community">
               <span class="nav-num">03</span>社区
@@ -68,7 +68,7 @@ export default (() => {
         <section class="jvc-home-section" id="tools">
           <div class="jvc-section-head">
             <span class="jvc-section-num">02</span>
-            <h2 class="jvc-section-title">工具</h2>
+            <h2 class="jvc-section-title">项目/工具</h2>
             <p class="jvc-section-prompt">ls tools/</p>
           </div>
           <div class="jvc-tool-grid">
