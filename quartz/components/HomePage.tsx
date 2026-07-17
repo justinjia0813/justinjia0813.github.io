@@ -79,7 +79,7 @@ export default (() => {
                   <span class="jvc-tool-lang">{tool.lang}</span>
                 </div>
                 <p class="jvc-tool-desc">{tool.desc}</p>
-                <span class="jvc-tool-link">github.com/justinjia0813 →</span>
+                <span class="jvc-tool-link">{tool.linkLabel ?? "github.com/justinjia0813"} →</span>
               </a>
             ))}
           </div>

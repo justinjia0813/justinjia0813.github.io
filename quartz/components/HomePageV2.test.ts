@@ -17,7 +17,20 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
   assert.doesNotMatch(component, /jvc-terminal-home/)
   assert.deepEqual(
     allTools.map((tool) => tool.name),
-    ["jvc-analyst", "digital-person-skill", "oh-my-waist"],
+    ["dottify", "VCagents", "jvc-analyst", "digital-person-skill", "oh-my-waist"],
+  )
+  assert.deepEqual(
+    allTools.slice(0, 2).map(({ url, linkLabel }) => ({ url, linkLabel })),
+    [
+      {
+        url: "https://dottify-20260717.justinjia0813.chatgpt.site",
+        linkLabel: "Live Site",
+      },
+      {
+        url: "https://vcagents-20260715.justinjia0813.chatgpt.site",
+        linkLabel: "Live Site",
+      },
+    ],
   )
 })
 

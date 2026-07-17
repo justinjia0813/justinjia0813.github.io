@@ -3,9 +3,24 @@ export interface ToolItem {
   lang: string
   desc: string
   url: string
+  linkLabel?: string
 }
 
 export const allTools: ToolItem[] = [
+  {
+    name: "dottify",
+    lang: "Live Site",
+    desc: "论点拆解与证据验证工作台，把复杂判断拆到可验证的原子并回传置信度。",
+    url: "https://dottify-20260717.justinjia0813.chatgpt.site",
+    linkLabel: "Live Site",
+  },
+  {
+    name: "VCagents",
+    lang: "Live Site",
+    desc: "面向国内一级市场的双向意向匹配演示，支持投资人与项目方双角色体验。",
+    url: "https://vcagents-20260715.justinjia0813.chatgpt.site",
+    linkLabel: "Live Site",
+  },
   {
     name: "jvc-analyst",
     lang: "Python",
