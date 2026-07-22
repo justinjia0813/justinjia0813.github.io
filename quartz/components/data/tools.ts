@@ -22,6 +22,13 @@ export const allTools: ToolItem[] = [
     linkLabel: "Live Site",
   },
   {
+    name: "Investable",
+    lang: "Live Site",
+    desc: "本地优先、证据驱动的产业研究数据库，沉淀产业树、公司、指标、来源与材料产品地图。",
+    url: "https://investable-20260722.justinjia0813.chatgpt.site",
+    linkLabel: "Live Site",
+  },
+  {
     name: "jvc-analyst",
     lang: "Python",
     desc: "本地优先（local-first）的一级市场早期投资尽职调查工具包，面向中国市场的标的分析。",
