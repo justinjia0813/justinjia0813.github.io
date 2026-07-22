@@ -18,10 +18,10 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
   assert.doesNotMatch(component, /jvc-terminal-home/)
   assert.deepEqual(
     allTools.map((tool) => tool.name),
-    ["dottify", "VCagents", "jvc-analyst", "digital-person-skill", "oh-my-waist"],
+    ["dottify", "VCagents", "Investable", "jvc-analyst", "digital-person-skill", "oh-my-waist"],
   )
   assert.deepEqual(
-    allTools.slice(0, 2).map(({ url, linkLabel }) => ({ url, linkLabel })),
+    allTools.slice(0, 3).map(({ url, linkLabel }) => ({ url, linkLabel })),
     [
       {
         url: "https://dottify-20260717.justinjia0813.chatgpt.site",
@@ -29,6 +29,10 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
       },
       {
         url: "https://vcagents-20260715.justinjia0813.chatgpt.site",
+        linkLabel: "Live Site",
+      },
+      {
+        url: "https://investable-20260722.justinjia0813.chatgpt.site",
         linkLabel: "Live Site",
       },
     ],
