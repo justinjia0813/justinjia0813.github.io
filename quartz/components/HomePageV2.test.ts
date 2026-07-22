@@ -19,7 +19,7 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
   assert.doesNotMatch(component, /jvc-terminal-home/)
   assert.deepEqual(
     allTools.map((tool) => tool.name),
-    ["dottify", "VCagents", "Investable", "jvc-analyst", "digital-person-skill", "oh-my-waist"],
+    ["dottify", "VCagents", "Investable", "jvc-analyst"],
   )
   assert.deepEqual(
     allTools.slice(0, 3).map(({ url, linkLabel }) => ({ url, linkLabel })),
