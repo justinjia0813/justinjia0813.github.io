@@ -8,8 +8,8 @@ The site is built with Quartz v4 and published through GitHub Pages from the `v4
 
 ```bash
 npm ci
-npx quartz build
-npx quartz build --serve
+npm run quartz -- build
+npm run quartz -- build --serve
 ```
 
 ## Content
