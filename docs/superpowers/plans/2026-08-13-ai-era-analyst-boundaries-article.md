@@ -20,8 +20,9 @@
 ### Task 1: 建立材料案例的证据底稿
 
 **Files:**
+
 - Create: `docs/research/2026-08-13-ai-era-analyst-boundaries-sources.md`
-- Read: `/Users/justinjia/.codex/attachments/de9ac440-a635-43ab-93c9-6e531e320471/pasted-text.txt`
+- Input: 用户提供的原始灵感材料
 
 - [ ] **Step 1: 启动研究流程并限定来源**
 
@@ -70,6 +71,7 @@ Expected: 只提交研究来源记录。
 ### Task 2: 撰写公开文章
 
 **Files:**
+
 - Create: `content/blogs/AI时代，分析师的能与不能.md`
 - Read: `docs/superpowers/specs/2026-08-13-ai-era-analyst-boundaries-article-design.md`
 - Read: `docs/research/2026-08-13-ai-era-analyst-boundaries-sources.md`
@@ -94,11 +96,17 @@ Expected: 不设置 `draft: true`，发布日期与实际上线日期一致。
 
 ```markdown
 ## 当完整报告变得廉价
+
 ## 人工智能的“能”
+
 ## 分析师的“不能”
+
 ## 人工智能的“不能”
+
 ## 从公开信息到可下注的因果链
+
 ## 材料投资：报告结束的地方，分析才刚开始
+
 ## 把人人都有的信息，推进为敢于负责的判断
 ```
 
@@ -146,6 +154,7 @@ Expected: 正文文件公开、结构完整、没有改动站点代码。
 ### Task 3: 审查文章的论证与证据边界
 
 **Files:**
+
 - Modify: `content/blogs/AI时代，分析师的能与不能.md`
 - Read: `docs/research/2026-08-13-ai-era-analyst-boundaries-sources.md`
 
@@ -212,6 +221,7 @@ Expected: 如审校没有产生变化，则跳过空提交。
 ### Task 4: 完成本地站点与浏览器验收
 
 **Files:**
+
 - Verify: `content/blogs/AI时代，分析师的能与不能.md`
 - Do not commit: `.playwright-cli/`, `output/playwright/`, `public/`
 
@@ -272,6 +282,7 @@ Expected: 没有未提交的文章改动或浏览器产物。
 ### Task 5: 通过 Pull Request 发布并验证线上结果
 
 **Files:**
+
 - Publish: branch `codex/ai-era-analyst-boundaries`
 - Base: branch `v4`
 
