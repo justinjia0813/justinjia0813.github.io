@@ -4,7 +4,7 @@
 
 **Goal:** Publish the approved bilingual CV page and the currently local-only analyst workflow article on the JVC Quartz website.
 
-**Architecture:** Render `/cv/` from one Quartz component containing paired Chinese and English content, with a tiny native browser script for language switching and browser-local preference. Reuse the existing JVC layout, typography, colors, and build pipeline; publish the article by removing its draft flag, then merge the verified branch into `v4` so the existing GitHub Pages workflow deploys both outputs.
+**Architecture:** Render `/cv` from one Quartz component containing paired Chinese and English content, with a tiny native browser script for language switching and browser-local preference. Reuse the existing JVC layout, typography, colors, and build pipeline; publish the article by removing its draft flag, then merge the verified branch into `v4` so the existing GitHub Pages workflow deploys both outputs.
 
 **Tech Stack:** Quartz 4.5.2, Preact, TypeScript, Sass, Node test runner, GitHub Pages
 
@@ -12,7 +12,7 @@
 
 ## File map
 
-- Create `content/cv.md`: supplies the `/cv/` route and page metadata.
+- Create `content/cv.md`: supplies the `/cv` route and page metadata.
 - Create `quartz/components/CVPage.tsx`: owns all public Chinese and English CV content and the static page structure.
 - Create `quartz/components/scripts/cvLanguage.inline.ts`: switches languages, remembers the choice, and restores the site language after single-page navigation.
 - Create `quartz/components/CVPage.test.ts`: protects the content, privacy, navigation, language, layout, and style contracts.
@@ -559,7 +559,7 @@ Expected: FAIL because the navigation, layout, and language script are not imple
 In `quartz/components/HomePage.tsx`, after the community link, add:
 
 ```tsx
-<a href="./cv/">
+<a href="./cv">
   <span class="nav-num">04</span>CV
 </a>
 ```
@@ -1053,7 +1053,7 @@ Run:
 npm run quartz -- build --serve
 ```
 
-Open `/cv/` and the article in the local browser. At desktop width, confirm the archive sidebar and content column are visible, the page has no clipping, and the language switch changes all visible content without moving to the top.
+Open `/cv` and the article in the local browser. At desktop width, confirm the archive sidebar and content column are visible, the page has no clipping, and the language switch changes all visible content without moving to the top.
 
 - [ ] **Step 4: Inspect mobile layout and browser state**
 
@@ -1120,7 +1120,7 @@ Expected: the latest `Deploy Quartz site to GitHub Pages` run completes successf
 Verify:
 
 ```text
-https://justinjia0813.github.io/cv/
+https://justinjia0813.github.io/cv
 https://justinjia0813.github.io/blogs/调研之后：分析师如何找到自己的技术栈
 ```
 

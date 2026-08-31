@@ -48,7 +48,7 @@ export default (() => {
               <a href="#community">
                 <span class="nav-num">03</span>社区
               </a>
-              <a href="./cv/">
+              <a href="./cv">
                 <span class="nav-num">04</span>CV
               </a>
             </nav>

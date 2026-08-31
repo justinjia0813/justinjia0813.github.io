@@ -37,7 +37,8 @@ test("CV page is linked, custom-rendered, and progressively enhanced", () => {
   const script = readFileSync(languageScriptPath, "utf8")
 
   assert.match(home, /nav-num">04<\/span>CV/)
-  assert.match(home, /href="\.\/cv\/"/)
+  assert.match(home, /href="\.\/cv"/)
+  assert.doesNotMatch(home, /href="\.\/cv\/"/)
   assert.match(layout, /Component\.CVPage\(\)/)
   assert.match(layout, /page\.fileData\.slug !== "cv"/)
   assert.match(script, /jvc-cv-language/)
