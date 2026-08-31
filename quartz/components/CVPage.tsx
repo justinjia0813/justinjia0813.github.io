@@ -29,7 +29,8 @@ const copy = {
         company: "广东华胥私募基金管理有限公司",
         bullets: [
           "负责新能源、新材料与人工智能前沿方向的行业研究和标的挖掘，重点覆盖固态电池、可控核聚变、先进电池材料、半导体材料、大模型、AI 基础设施与 AI for Science。",
-          "参与潜在项目的筛选、技术与商业分析、访谈、投决支持及投资执行，累计推动亿元级资金落地，形成从行业研判到项目执行的完整经验。",
+          "参与潜在项目的筛选、技术与商业分析、访谈、投决支持及投资执行，形成从行业研判到项目执行的完整经验。",
+          "围绕固态电池产业链开展全方位布局，覆盖硅碳负极、半固态电池与固态电解质等关键环节，推进相关项目投资超过 1 亿元。",
           "完成 DeepSeek 投资分析并支持项目立项；完成 AI 芯片散热材料行业研究并支持项目立项；推动 AI for Materials 项目进入投决，并主导参与一家相关企业的早期孵化。",
           "围绕人工智能基础设施的能源约束，分别研究燃气轮机、储能、固体氧化物燃料电池、小型模块化反应堆与可控核聚变等供能路径并形成专题报告。",
         ],
@@ -133,7 +134,8 @@ const copy = {
         company: "Guangdong Huaxu Private Fund Management Co., Ltd.",
         bullets: [
           "Led industry research and company sourcing across new energy, advanced materials and artificial intelligence, covering solid-state batteries, fusion, battery and semiconductor materials, foundation models, AI infrastructure and AI for Science.",
-          "Supported project screening, technical and commercial analysis, interviews, investment-committee decisions and execution; contributed to approximately RMB 100 million in deployed capital.",
+          "Supported project screening, technical and commercial analysis, interviews, investment-committee decisions and execution, building end-to-end experience from industry judgment to project execution.",
+          "Developed broad investment coverage across the solid-state battery value chain, including silicon-carbon anodes, semi-solid batteries and solid electrolytes, and advanced more than RMB 100 million in related investments.",
           "Produced the DeepSeek investment analysis and an AI-chip thermal-materials study that advanced to project initiation; helped move an AI for Materials opportunity into investment review and led participation in the early incubation of a related company.",
           "Authored focused studies on gas turbines, energy storage, solid oxide fuel cells, small modular reactors and fusion as power pathways for AI infrastructure.",
         ],
