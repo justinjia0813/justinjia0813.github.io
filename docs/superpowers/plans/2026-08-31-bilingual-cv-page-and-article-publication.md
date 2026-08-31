@@ -25,6 +25,7 @@
 ### Task 1: Publish the analyst workflow article locally
 
 **Files:**
+
 - Modify: `content/blogs/调研之后：分析师如何找到自己的技术栈.md:1-6`
 
 - [ ] **Step 1: Change the publication flag**
@@ -67,6 +68,7 @@ git commit -m 'content: publish analyst workflow article'
 ### Task 2: Add the CV content contract and page component
 
 **Files:**
+
 - Create: `quartz/components/CVPage.test.ts`
 - Create: `content/cv.md`
 - Create: `quartz/components/CVPage.tsx`
@@ -273,16 +275,21 @@ const copy = {
         title: "DeepSeek Investment Analysis",
         status: "Initiated",
         subject: "Investment value of a frontier foundation-model company",
-        question: "Whether its technology route, model capability and training economics could sustain an advantage",
-        analysis: "Model capability, training and inference cost, competition, business model and valuation",
+        question:
+          "Whether its technology route, model capability and training economics could sustain an advantage",
+        analysis:
+          "Model capability, training and inference cost, competition, business model and valuation",
       },
       {
         id: "R-02",
         title: "AI for Materials",
         status: "Investment Committee / Incubation",
-        subject: "Industrial opportunities and representative companies in AI-enabled materials research",
-        question: "Whether capability boundaries, experimental loops and business models form a deliverable research system",
-        analysis: "Technology routes, data and toolchains, competition, business model and valuation",
+        subject:
+          "Industrial opportunities and representative companies in AI-enabled materials research",
+        question:
+          "Whether capability boundaries, experimental loops and business models form a deliverable research system",
+        analysis:
+          "Technology routes, data and toolchains, competition, business model and valuation",
       },
       {
         id: "R-03",
@@ -290,7 +297,8 @@ const copy = {
         status: "Initiated",
         subject: "Advanced thermal materials created by rising AI-chip compute density",
         question: "How material routes address packaging and system-level thermal bottlenecks",
-        analysis: "Thermal interface materials, packaging materials and diamond-based thermal routes",
+        analysis:
+          "Thermal interface materials, packaging materials and diamond-based thermal routes",
       },
       {
         id: "R-04",
@@ -298,7 +306,8 @@ const copy = {
         status: "Ongoing Research",
         subject: "Power supply and energy technologies for AI infrastructure",
         question: "How power density, reliability and deployment time reshape technology choices",
-        analysis: "Gas turbines, storage, solid oxide fuel cells, small modular reactors and fusion",
+        analysis:
+          "Gas turbines, storage, solid oxide fuel cells, small modular reactors and fusion",
       },
     ],
     research: [
@@ -320,11 +329,18 @@ const copy = {
     capabilities: [
       ["Technology", "Technology routes · Capability boundaries · Bottlenecks · Manufacturability"],
       ["Industry", "Value chains · Competitive structure · Markets and policy · Business models"],
-      ["Investment", "Screening · Valuation · Initiation and investment-committee materials · Execution support"],
-      ["Research Workflow", "English literature and industry research · AI-native tools and workflows"],
+      [
+        "Investment",
+        "Screening · Valuation · Initiation and investment-committee materials · Execution support",
+      ],
+      [
+        "Research Workflow",
+        "English literature and industry research · AI-native tools and workflows",
+      ],
     ],
     credential: "Fund practitioner qualification",
-    contact: "If you are also working on artificial intelligence, energy or materials science, let’s connect.",
+    contact:
+      "If you are also working on artificial intelligence, energy or materials science, let’s connect.",
   },
 } as const
 
@@ -340,7 +356,9 @@ const renderLanguage = (language: Language) => {
         <p class="jvc-cv-role">{text.title}</p>
         <p class="jvc-cv-focus">{text.focus}</p>
         <div class="jvc-cv-domains" aria-label="Focus areas">
-          <span>AI</span><span>ENERGY</span><span>MATERIALS SCIENCE</span>
+          <span>AI</span>
+          <span>ENERGY</span>
+          <span>MATERIALS SCIENCE</span>
         </div>
         <nav class="jvc-cv-index" aria-label={language === "zh" ? "履历章节" : "CV sections"}>
           <a href={sectionLink("experience")}>01 {text.experienceLabel}</a>
@@ -353,13 +371,25 @@ const renderLanguage = (language: Language) => {
       </aside>
 
       <main class="jvc-cv-main">
-        <section class="jvc-cv-intro"><p>{text.intro}</p></section>
+        <section class="jvc-cv-intro">
+          <p>{text.intro}</p>
+        </section>
         <section class="jvc-cv-section" id={`${language}-experience`}>
           <p class="jvc-cv-section-label">01 / {text.experienceLabel}</p>
           {text.experience.map((entry) => (
             <article class="jvc-cv-entry">
-              <div class="jvc-cv-entry-meta"><time>{entry.period}</time><span>{entry.role}</span></div>
-              <div><h2>{entry.company}</h2><ul>{entry.bullets.map((bullet) => <li>{bullet}</li>)}</ul></div>
+              <div class="jvc-cv-entry-meta">
+                <time>{entry.period}</time>
+                <span>{entry.role}</span>
+              </div>
+              <div>
+                <h2>{entry.company}</h2>
+                <ul>
+                  {entry.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
             </article>
           ))}
         </section>
@@ -368,22 +398,51 @@ const renderLanguage = (language: Language) => {
           {text.work.map((project) => (
             <article class="jvc-cv-project">
               <p class="jvc-cv-project-id">{project.id}</p>
-              <div><h2>{project.title}</h2><dl><dt>{language === "zh" ? "研究对象" : "Subject"}</dt><dd>{project.subject}</dd><dt>{language === "zh" ? "核心问题" : "Question"}</dt><dd>{project.question}</dd><dt>{language === "zh" ? "分析维度" : "Analysis"}</dt><dd>{project.analysis}</dd></dl></div>
+              <div>
+                <h2>{project.title}</h2>
+                <dl>
+                  <dt>{language === "zh" ? "研究对象" : "Subject"}</dt>
+                  <dd>{project.subject}</dd>
+                  <dt>{language === "zh" ? "核心问题" : "Question"}</dt>
+                  <dd>{project.question}</dd>
+                  <dt>{language === "zh" ? "分析维度" : "Analysis"}</dt>
+                  <dd>{project.analysis}</dd>
+                </dl>
+              </div>
               <p class="jvc-cv-stamp">{project.status}</p>
             </article>
           ))}
         </section>
         <section class="jvc-cv-section" id={`${language}-research`}>
           <p class="jvc-cv-section-label">03 / {text.researchLabel}</p>
-          {text.research.map((item) => <article class="jvc-cv-research"><time>{item.period}</time><div><h2>{item.title}</h2><p>{item.text}</p></div></article>)}
+          {text.research.map((item) => (
+            <article class="jvc-cv-research">
+              <time>{item.period}</time>
+              <div>
+                <h2>{item.title}</h2>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
         </section>
         <section class="jvc-cv-section" id={`${language}-education`}>
           <p class="jvc-cv-section-label">04 / {text.educationLabel}</p>
-          <ul class="jvc-cv-education">{text.education.map((item) => <li>{item}</li>)}</ul>
+          <ul class="jvc-cv-education">
+            {text.education.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
         </section>
         <section class="jvc-cv-section" id={`${language}-capabilities`}>
           <p class="jvc-cv-section-label">05 / {text.capabilitiesLabel}</p>
-          <div class="jvc-cv-capabilities">{text.capabilities.map(([title, detail]) => <div><h2>{title}</h2><p>{detail}</p></div>)}</div>
+          <div class="jvc-cv-capabilities">
+            {text.capabilities.map(([title, detail]) => (
+              <div>
+                <h2>{title}</h2>
+                <p>{detail}</p>
+              </div>
+            ))}
+          </div>
           <p class="jvc-cv-credential">{text.credential}</p>
         </section>
         <section class="jvc-cv-section jvc-cv-contact" id={`${language}-contact`}>
@@ -399,7 +458,24 @@ const renderLanguage = (language: Language) => {
 export default (() => {
   const CVPage: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
     if (fileData.slug !== "cv") return null
-    return <div class="jvc-cv"><div class="jvc-cv-toolbar"><a href="../">← JVC Notes</a><div class="jvc-cv-language-switch" aria-label="Language"><button type="button" data-cv-lang="zh" aria-pressed="true">中文</button><span>/</span><button type="button" data-cv-lang="en" aria-pressed="false">EN</button></div></div>{renderLanguage("zh")}{renderLanguage("en")}</div>
+    return (
+      <div class="jvc-cv">
+        <div class="jvc-cv-toolbar">
+          <a href="../">← JVC Notes</a>
+          <div class="jvc-cv-language-switch" aria-label="Language">
+            <button type="button" data-cv-lang="zh" aria-pressed="true">
+              中文
+            </button>
+            <span>/</span>
+            <button type="button" data-cv-lang="en" aria-pressed="false">
+              EN
+            </button>
+          </div>
+        </div>
+        {renderLanguage("zh")}
+        {renderLanguage("en")}
+      </div>
+    )
   }
   CVPage.afterDOMLoaded = cvLanguageScript
   return CVPage
@@ -436,6 +512,7 @@ git commit -m 'feat: add bilingual CV content'
 ### Task 3: Add navigation, layout, and language behavior
 
 **Files:**
+
 - Modify: `quartz/components/CVPage.test.ts`
 - Create: `quartz/components/scripts/cvLanguage.inline.ts`
 - Modify: `quartz/components/HomePage.tsx`
@@ -501,7 +578,7 @@ Component.ConditionalRender({
 Use this condition for breadcrumbs, article title, content metadata, and the desktop table of contents:
 
 ```ts
-(page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv"
+;(page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv"
 ```
 
 - [ ] **Step 5: Implement the native language switch**
@@ -521,7 +598,8 @@ document.addEventListener("nav", () => {
     root.dataset.language = language
     document.documentElement.lang = language === "zh" ? "zh-CN" : "en"
     for (const panel of panels) panel.hidden = panel.dataset.languageContent !== language
-    for (const button of buttons) button.setAttribute("aria-pressed", String(button.dataset.cvLang === language))
+    for (const button of buttons)
+      button.setAttribute("aria-pressed", String(button.dataset.cvLang === language))
   }
 
   let language: "zh" | "en" = "zh"
@@ -534,7 +612,9 @@ document.addEventListener("nav", () => {
     const value = (event.currentTarget as HTMLButtonElement).dataset.cvLang
     if (value !== "zh" && value !== "en") return
     applyLanguage(value)
-    try { window.localStorage.setItem(key, value) } catch {}
+    try {
+      window.localStorage.setItem(key, value)
+    } catch {}
   }
 
   for (const button of buttons) button.addEventListener("click", onClick)
@@ -565,6 +645,7 @@ git commit -m 'feat: integrate CV navigation and language switch'
 ### Task 4: Add the editorial archive styling
 
 **Files:**
+
 - Modify: `quartz/components/CVPage.test.ts`
 - Modify: `quartz/styles/custom.scss`
 
@@ -601,73 +682,317 @@ Expected: FAIL because the CV selectors do not exist.
 Append a `CV page — editorial archive` section to `quartz/styles/custom.scss` with these rules:
 
 ```scss
-body[data-slug="cv"] .page { max-width: 1280px; }
+body[data-slug="cv"] .page {
+  max-width: 1280px;
+}
 body[data-slug="cv"] .page > #quartz-body {
   grid-template-columns: minmax(0, 1fr);
   grid-template-areas: "grid-sidebar-left" "grid-header" "grid-center" "grid-footer";
 }
 body[data-slug="cv"] .right.sidebar,
 body[data-slug="cv"] .center > article,
-body[data-slug="cv"] .center > hr { display: none; }
-.jvc-cv { --cv-accent: var(--secondary); padding: 3.5rem 0 6rem; }
-.jvc-cv-toolbar { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--jvc-border); padding-bottom: 1rem; }
-.jvc-cv-toolbar > a { color: var(--dark); font-family: var(--jvc-mono-font); font-size: 0.72rem; text-decoration: none; }
-.jvc-cv-language-switch { display: flex; align-items: center; gap: 0.55rem; font-family: var(--jvc-mono-font); font-size: 0.72rem; }
-.jvc-cv-language-switch button { border: 0; padding: 0.35rem 0.2rem; background: transparent; color: var(--jvc-muted); cursor: pointer; }
-.jvc-cv-language-switch button[aria-pressed="true"] { color: var(--cv-accent); }
-.jvc-cv-language[hidden] { display: none; }
-.jvc-cv-language { display: grid; grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr); gap: clamp(3rem, 7vw, 7rem); padding-top: 3.5rem; }
-.jvc-cv article { max-width: none; margin: 0; padding-bottom: 0; font-size: inherit; }
-.jvc-cv article p, .jvc-cv article li { text-align: left; }
-.jvc-cv-sidebar { position: sticky; top: 7rem; align-self: start; }
-.jvc-cv-file, .jvc-cv-section-label, .jvc-cv-entry-meta, .jvc-cv-project-id, .jvc-cv-stamp { font-family: var(--jvc-mono-font); }
-.jvc-cv-file { margin: 0 0 2rem; color: var(--cv-accent); font-size: 0.68rem; letter-spacing: 0.05em; }
-.jvc-cv-name { margin: 0; font-family: var(--jvc-display-font); font-size: clamp(2.4rem, 4vw, 4rem); line-height: 1; }
-.jvc-cv-role { margin: 1.3rem 0 0; font-weight: 700; }
-.jvc-cv-focus { margin: 0.5rem 0 0; color: var(--jvc-muted); line-height: 1.65; }
-.jvc-cv-domains { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 1.6rem; }
-.jvc-cv-domains span { border: 1px solid var(--jvc-border); padding: 0.3rem 0.45rem; font-family: var(--jvc-mono-font); font-size: 0.58rem; }
-.jvc-cv-index { display: grid; gap: 0.75rem; margin-top: 3rem; }
-.jvc-cv-index a { color: var(--jvc-muted); font-family: var(--jvc-mono-font); font-size: 0.68rem; text-decoration: none; }
-.jvc-cv-intro { padding: 0 0 4rem; }
-.jvc-cv-intro p { max-width: 780px; margin: 0; font-family: var(--jvc-display-font); font-size: clamp(1.4rem, 2.4vw, 2.15rem); line-height: 1.65; }
-.jvc-cv-section { scroll-margin-top: 7rem; border-top: 1px solid var(--jvc-border); padding: 1.1rem 0 4.5rem; }
-.jvc-cv-section-label { margin: 0 0 2rem; color: var(--cv-accent); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
-.jvc-cv-entry, .jvc-cv-research { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 2rem; margin: 0; border-top: 1px solid var(--jvc-hairline); padding: 1.6rem 0; }
-.jvc-cv-entry:first-of-type, .jvc-cv-research:first-of-type { border-top: 0; }
-.jvc-cv-entry-meta { display: flex; flex-direction: column; gap: 0.55rem; color: var(--jvc-muted); font-size: 0.67rem; line-height: 1.45; }
-.jvc-cv-entry h2, .jvc-cv-project h2, .jvc-cv-research h2, .jvc-cv-capabilities h2 { margin: 0; font-family: var(--jvc-display-font); font-size: 1.05rem; }
-.jvc-cv-entry ul { margin: 0.9rem 0 0; padding-left: 1.1rem; }
-.jvc-cv-entry li, .jvc-cv-research p, .jvc-cv-capabilities p { color: var(--jvc-muted); font-size: 0.9rem; line-height: 1.75; }
-.jvc-cv-project { display: grid; grid-template-columns: 56px minmax(0, 1fr) 112px; gap: 1.2rem; margin: 0; border-top: 1px solid var(--jvc-hairline); padding: 1.6rem 0; }
-.jvc-cv-project-id { margin: 0; color: var(--cv-accent); font-size: 0.68rem; }
-.jvc-cv-project dl { display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 0.5rem 1rem; margin: 1rem 0 0; font-size: 0.84rem; line-height: 1.65; }
-.jvc-cv-project dt { color: var(--jvc-muted); }
-.jvc-cv-project dd { margin: 0; }
-.jvc-cv-stamp { align-self: start; margin: 0; border: 1px solid var(--cv-accent); padding: 0.35rem 0.45rem; color: var(--cv-accent); font-size: 0.58rem; line-height: 1.35; text-align: center; }
-.jvc-cv-research time { color: var(--jvc-muted); font-family: var(--jvc-mono-font); font-size: 0.67rem; }
-.jvc-cv-research p { margin: 0.75rem 0 0; }
-.jvc-cv-education { display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
-.jvc-cv-education li { border-top: 1px solid var(--jvc-hairline); padding: 1rem 0; }
-.jvc-cv-capabilities { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
-.jvc-cv-capabilities > div { border-top: 1px solid var(--jvc-hairline); padding-top: 1rem; }
-.jvc-cv-capabilities p { margin: 0.65rem 0 0; }
-.jvc-cv-credential { margin: 2rem 0 0; color: var(--jvc-muted); font-family: var(--jvc-mono-font); font-size: 0.7rem; }
-.jvc-cv-contact > p:not(.jvc-cv-section-label) { max-width: 680px; font-size: 1.2rem; line-height: 1.7; }
-.jvc-cv-contact a { display: inline-block; margin-top: 1rem; color: var(--cv-accent); font-family: var(--jvc-mono-font); }
-.jvc-cv a:focus-visible, .jvc-cv button:focus-visible { outline: 2px solid var(--cv-accent); outline-offset: 4px; }
+body[data-slug="cv"] .center > hr {
+  display: none;
+}
+.jvc-cv {
+  --cv-accent: var(--secondary);
+  padding: 3.5rem 0 6rem;
+}
+.jvc-cv-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--jvc-border);
+  padding-bottom: 1rem;
+}
+.jvc-cv-toolbar > a {
+  color: var(--dark);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.72rem;
+  text-decoration: none;
+}
+.jvc-cv-language-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--jvc-mono-font);
+  font-size: 0.72rem;
+}
+.jvc-cv-language-switch button {
+  border: 0;
+  padding: 0.35rem 0.2rem;
+  background: transparent;
+  color: var(--jvc-muted);
+  cursor: pointer;
+}
+.jvc-cv-language-switch button[aria-pressed="true"] {
+  color: var(--cv-accent);
+}
+.jvc-cv-language[hidden] {
+  display: none;
+}
+.jvc-cv-language {
+  display: grid;
+  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  padding-top: 3.5rem;
+}
+.jvc-cv article {
+  max-width: none;
+  margin: 0;
+  padding-bottom: 0;
+  font-size: inherit;
+}
+.jvc-cv article p,
+.jvc-cv article li {
+  text-align: left;
+}
+.jvc-cv-sidebar {
+  position: sticky;
+  top: 7rem;
+  align-self: start;
+}
+.jvc-cv-file,
+.jvc-cv-section-label,
+.jvc-cv-entry-meta,
+.jvc-cv-project-id,
+.jvc-cv-stamp {
+  font-family: var(--jvc-mono-font);
+}
+.jvc-cv-file {
+  margin: 0 0 2rem;
+  color: var(--cv-accent);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+.jvc-cv-name {
+  margin: 0;
+  font-family: var(--jvc-display-font);
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1;
+}
+.jvc-cv-role {
+  margin: 1.3rem 0 0;
+  font-weight: 700;
+}
+.jvc-cv-focus {
+  margin: 0.5rem 0 0;
+  color: var(--jvc-muted);
+  line-height: 1.65;
+}
+.jvc-cv-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1.6rem;
+}
+.jvc-cv-domains span {
+  border: 1px solid var(--jvc-border);
+  padding: 0.3rem 0.45rem;
+  font-family: var(--jvc-mono-font);
+  font-size: 0.58rem;
+}
+.jvc-cv-index {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+.jvc-cv-index a {
+  color: var(--jvc-muted);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+.jvc-cv-intro {
+  padding: 0 0 4rem;
+}
+.jvc-cv-intro p {
+  max-width: 780px;
+  margin: 0;
+  font-family: var(--jvc-display-font);
+  font-size: clamp(1.4rem, 2.4vw, 2.15rem);
+  line-height: 1.65;
+}
+.jvc-cv-section {
+  scroll-margin-top: 7rem;
+  border-top: 1px solid var(--jvc-border);
+  padding: 1.1rem 0 4.5rem;
+}
+.jvc-cv-section-label {
+  margin: 0 0 2rem;
+  color: var(--cv-accent);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.jvc-cv-entry,
+.jvc-cv-research {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 2rem;
+  margin: 0;
+  border-top: 1px solid var(--jvc-hairline);
+  padding: 1.6rem 0;
+}
+.jvc-cv-entry:first-of-type,
+.jvc-cv-research:first-of-type {
+  border-top: 0;
+}
+.jvc-cv-entry-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  color: var(--jvc-muted);
+  font-size: 0.67rem;
+  line-height: 1.45;
+}
+.jvc-cv-entry h2,
+.jvc-cv-project h2,
+.jvc-cv-research h2,
+.jvc-cv-capabilities h2 {
+  margin: 0;
+  font-family: var(--jvc-display-font);
+  font-size: 1.05rem;
+}
+.jvc-cv-entry ul {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+}
+.jvc-cv-entry li,
+.jvc-cv-research p,
+.jvc-cv-capabilities p {
+  color: var(--jvc-muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+.jvc-cv-project {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 112px;
+  gap: 1.2rem;
+  margin: 0;
+  border-top: 1px solid var(--jvc-hairline);
+  padding: 1.6rem 0;
+}
+.jvc-cv-project-id {
+  margin: 0;
+  color: var(--cv-accent);
+  font-size: 0.68rem;
+}
+.jvc-cv-project dl {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 0.5rem 1rem;
+  margin: 1rem 0 0;
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+.jvc-cv-project dt {
+  color: var(--jvc-muted);
+}
+.jvc-cv-project dd {
+  margin: 0;
+}
+.jvc-cv-stamp {
+  align-self: start;
+  margin: 0;
+  border: 1px solid var(--cv-accent);
+  padding: 0.35rem 0.45rem;
+  color: var(--cv-accent);
+  font-size: 0.58rem;
+  line-height: 1.35;
+  text-align: center;
+}
+.jvc-cv-research time {
+  color: var(--jvc-muted);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.67rem;
+}
+.jvc-cv-research p {
+  margin: 0.75rem 0 0;
+}
+.jvc-cv-education {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.jvc-cv-education li {
+  border-top: 1px solid var(--jvc-hairline);
+  padding: 1rem 0;
+}
+.jvc-cv-capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+.jvc-cv-capabilities > div {
+  border-top: 1px solid var(--jvc-hairline);
+  padding-top: 1rem;
+}
+.jvc-cv-capabilities p {
+  margin: 0.65rem 0 0;
+}
+.jvc-cv-credential {
+  margin: 2rem 0 0;
+  color: var(--jvc-muted);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.7rem;
+}
+.jvc-cv-contact > p:not(.jvc-cv-section-label) {
+  max-width: 680px;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+.jvc-cv-contact a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--cv-accent);
+  font-family: var(--jvc-mono-font);
+}
+.jvc-cv a:focus-visible,
+.jvc-cv button:focus-visible {
+  outline: 2px solid var(--cv-accent);
+  outline-offset: 4px;
+}
 
 @media (max-width: 760px) {
-  body[data-slug="cv"] .page { padding: 0 1.25rem; }
-  .jvc-cv { padding-top: 2rem; }
-  .jvc-cv-language { grid-template-columns: 1fr; gap: 3.5rem; padding-top: 2.5rem; }
-  .jvc-cv-sidebar { position: static; }
-  .jvc-cv-index { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .jvc-cv-entry, .jvc-cv-research, .jvc-cv-project { grid-template-columns: 1fr; gap: 0.8rem; }
-  .jvc-cv-project dl { grid-template-columns: 1fr; gap: 0.25rem; }
-  .jvc-cv-project dd { margin-bottom: 0.7rem; }
-  .jvc-cv-stamp { width: fit-content; }
-  .jvc-cv-capabilities { grid-template-columns: 1fr; }
+  body[data-slug="cv"] .page {
+    padding: 0 1.25rem;
+  }
+  .jvc-cv {
+    padding-top: 2rem;
+  }
+  .jvc-cv-language {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    padding-top: 2.5rem;
+  }
+  .jvc-cv-sidebar {
+    position: static;
+  }
+  .jvc-cv-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .jvc-cv-entry,
+  .jvc-cv-research,
+  .jvc-cv-project {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  .jvc-cv-project dl {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .jvc-cv-project dd {
+    margin-bottom: 0.7rem;
+  }
+  .jvc-cv-stamp {
+    width: fit-content;
+  }
+  .jvc-cv-capabilities {
+    grid-template-columns: 1fr;
+  }
 }
 ```
 
@@ -694,6 +1019,7 @@ git commit -m 'style: add editorial CV layout'
 ### Task 5: Build and inspect the complete local site
 
 **Files:**
+
 - Verify generated output under `public/`; do not commit it.
 
 - [ ] **Step 1: Build the production site**
@@ -746,6 +1072,7 @@ Open the analyst workflow article and confirm it appears on the homepage article
 ### Task 6: Publish through `v4` and verify production
 
 **Files:**
+
 - No additional source files expected.
 
 - [ ] **Step 1: Confirm the branch contains only intended commits**
