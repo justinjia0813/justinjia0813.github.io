@@ -8,6 +8,7 @@ const contentPath = fileURLToPath(new URL("../../content/cv.md", import.meta.url
 const homePath = fileURLToPath(new URL("./HomePage.tsx", import.meta.url))
 const layoutPath = fileURLToPath(new URL("../../quartz.layout.ts", import.meta.url))
 const languageScriptPath = fileURLToPath(new URL("./scripts/cvLanguage.inline.ts", import.meta.url))
+const stylesPath = fileURLToPath(new URL("../styles/custom.scss", import.meta.url))
 
 test("CV page keeps the approved public content and privacy boundary", () => {
   const component = readFileSync(componentPath, "utf8")
@@ -44,4 +45,15 @@ test("CV page is linked, custom-rendered, and progressively enhanced", () => {
   assert.match(script, /aria-pressed/)
   assert.match(script, /document\.documentElement\.lang/)
   assert.match(script, /window\.addCleanup/)
+})
+
+test("CV page keeps the approved editorial archive and responsive layout", () => {
+  const styles = readFileSync(stylesPath, "utf8")
+
+  assert.match(styles, /body\[data-slug="cv"\]/)
+  assert.match(styles, /\.jvc-cv-language/)
+  assert.match(styles, /grid-template-columns: minmax\(210px, 0\.28fr\) minmax\(0, 1fr\)/)
+  assert.match(styles, /\.jvc-cv-stamp/)
+  assert.match(styles, /\.jvc-cv a:focus-visible/)
+  assert.match(styles, /@media \(max-width: 760px\)/)
 })

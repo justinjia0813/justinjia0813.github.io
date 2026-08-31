@@ -149,7 +149,8 @@ const copy = {
           "Industrial opportunities and representative companies in AI-enabled materials research",
         question:
           "Whether capability boundaries, experimental loops and business models form a deliverable research system",
-        analysis: "Technology routes, data and toolchains, competition, business model and valuation",
+        analysis:
+          "Technology routes, data and toolchains, competition, business model and valuation",
       },
       {
         id: "R-03",
@@ -157,7 +158,8 @@ const copy = {
         status: "Initiated",
         subject: "Advanced thermal materials created by rising AI-chip compute density",
         question: "How material routes address packaging and system-level thermal bottlenecks",
-        analysis: "Thermal interface materials, packaging materials and diamond-based thermal routes",
+        analysis:
+          "Thermal interface materials, packaging materials and diamond-based thermal routes",
       },
       {
         id: "R-04",
@@ -186,14 +188,8 @@ const copy = {
       "Shanghai University · Master of Science in Polymer Chemistry and Physics · 2022—2025",
     ],
     capabilities: [
-      [
-        "Technology",
-        "Technology routes · Capability boundaries · Bottlenecks · Manufacturability",
-      ],
-      [
-        "Industry",
-        "Value chains · Competitive structure · Markets and policy · Business models",
-      ],
+      ["Technology", "Technology routes · Capability boundaries · Bottlenecks · Manufacturability"],
+      ["Industry", "Value chains · Competitive structure · Markets and policy · Business models"],
       [
         "Investment",
         "Screening · Valuation · Initiation and investment-committee materials · Execution support",
@@ -251,7 +247,9 @@ const renderLanguage = (language: Language) => {
               <div>
                 <h2>{entry.company}</h2>
                 <ul>
-                  {entry.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                  {entry.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
                 </ul>
               </div>
             </article>
@@ -295,7 +293,9 @@ const renderLanguage = (language: Language) => {
         <section class="jvc-cv-section" id={`${language}-education`}>
           <p class="jvc-cv-section-label">04 / {text.educationLabel}</p>
           <ul class="jvc-cv-education">
-            {text.education.map((item) => <li key={item}>{item}</li>)}
+            {text.education.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </section>
 
@@ -331,9 +331,13 @@ export default (() => {
         <div class="jvc-cv-toolbar">
           <a href="../">← JVC Notes</a>
           <div class="jvc-cv-language-switch" aria-label="Language">
-            <button type="button" data-cv-lang="zh" aria-pressed="true">中文</button>
+            <button type="button" data-cv-lang="zh" aria-pressed="true">
+              中文
+            </button>
             <span>/</span>
-            <button type="button" data-cv-lang="en" aria-pressed="false">EN</button>
+            <button type="button" data-cv-lang="en" aria-pressed="false">
+              EN
+            </button>
           </div>
         </div>
         {renderLanguage("zh")}
