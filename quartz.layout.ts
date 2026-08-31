@@ -19,19 +19,23 @@ export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
     }),
     Component.ConditionalRender({
       component: Component.HomePage(),
       condition: (page) => page.fileData.slug === "index",
     }),
     Component.ConditionalRender({
+      component: Component.CVPage(),
+      condition: (page) => page.fileData.slug === "cv",
+    }),
+    Component.ConditionalRender({
       component: Component.ArticleTitle(),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
     }),
     Component.ConditionalRender({
       component: Component.ContentMeta(),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
     }),
   ],
   left: [
@@ -51,7 +55,7 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.ConditionalRender({
       component: Component.DesktopOnly(Component.TableOfContents()),
-      condition: (page) => page.fileData.slug !== "index",
+      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
     }),
   ],
 }
