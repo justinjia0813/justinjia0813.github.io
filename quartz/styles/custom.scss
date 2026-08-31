@@ -126,7 +126,8 @@ body[data-slug="cv"] .center > hr {
 }
 
 .jvc-cv-role {
-  margin: 1.3rem 0 0;
+  margin: 0.55rem 0 0;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
@@ -416,9 +417,9 @@ body[data-slug="cv"] .page {
 .jvc-cv-hero h1 {
   margin: 0;
   font-family: var(--jvc-display-font);
-  font-size: clamp(3rem, 8vw, 5.6rem);
-  font-weight: 500;
-  line-height: 0.98;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .jvc-cv-lede {
