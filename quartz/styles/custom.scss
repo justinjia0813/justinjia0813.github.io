@@ -388,6 +388,183 @@ body[data-slug="cv"] .center > hr {
   }
 }
 
+// Reference-CV layout: a compact, single-column professional record.
+body[data-slug="cv"] .page {
+  max-width: 980px;
+}
+
+.jvc-cv-language {
+  display: block;
+  max-width: 820px;
+  margin: 0 auto;
+  padding-top: 4.75rem;
+}
+
+.jvc-cv-hero {
+  display: block;
+  padding-bottom: 4rem;
+}
+
+.jvc-cv-kicker {
+  margin: 0 0 1.5rem;
+  color: var(--cv-accent);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.jvc-cv-hero h1 {
+  margin: 0;
+  font-family: var(--jvc-display-font);
+  font-size: clamp(3rem, 8vw, 5.6rem);
+  font-weight: 500;
+  line-height: 0.98;
+}
+
+.jvc-cv-lede {
+  max-width: 720px;
+  margin: 1.75rem 0 0;
+  color: var(--jvc-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.jvc-cv-section {
+  padding: 1.5rem 0 4.5rem;
+}
+
+.jvc-cv-section > h2 {
+  margin: 0 0 2.2rem;
+  font-family: var(--jvc-display-font);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.jvc-cv-contact-card dl {
+  margin: 0;
+}
+
+.jvc-cv-contact-card dl > div {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  border-top: 1px solid var(--jvc-hairline);
+  padding: 0.72rem 0;
+}
+
+.jvc-cv-contact-card dt,
+.jvc-cv-entry-meta,
+.jvc-cv-education time,
+.jvc-cv-publication time,
+.jvc-cv-skill-level {
+  color: var(--jvc-muted);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.7rem;
+}
+
+.jvc-cv-contact-card dd {
+  margin: 0;
+}
+
+.jvc-cv-contact-card a,
+.jvc-cv-publication a {
+  color: var(--dark);
+}
+
+.jvc-cv-list > article {
+  border-top: 1px solid var(--jvc-hairline);
+}
+
+.jvc-cv-entry,
+.jvc-cv-education,
+.jvc-cv-publication {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 2.25rem;
+  padding: 1.8rem 0;
+}
+
+.jvc-cv-entry h3,
+.jvc-cv-education h3,
+.jvc-cv-publication h3,
+.jvc-cv-skills h3 {
+  margin: 0;
+  font-family: var(--jvc-display-font);
+  font-size: 1.05rem;
+}
+
+.jvc-cv-organization,
+.jvc-cv-education p,
+.jvc-cv-publication-journal {
+  margin: 0.35rem 0 0;
+  color: var(--dark);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.jvc-cv-entry ul {
+  margin-top: 1.1rem;
+}
+
+.jvc-cv-entry li,
+.jvc-cv-summary > p,
+.jvc-cv-publication p,
+.jvc-cv-skills article > p:last-child {
+  color: var(--jvc-muted);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.jvc-cv-summary > p {
+  max-width: 760px;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.jvc-cv-publication p {
+  margin: 0.65rem 0 0;
+}
+
+.jvc-cv-tag {
+  display: inline-block;
+  margin-right: 0.7rem;
+  border: 1px solid var(--jvc-border);
+  padding: 0.15rem 0.38rem;
+  color: var(--dark);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.62rem;
+}
+
+.jvc-cv-skills article {
+  display: grid;
+  grid-template-columns: 190px 110px minmax(0, 1fr);
+  gap: 1.5rem;
+  border-top: 1px solid var(--jvc-hairline);
+  padding: 1.2rem 0;
+}
+
+.jvc-cv-skills p {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .jvc-cv-language {
+    padding-top: 3rem;
+  }
+
+  .jvc-cv-hero {
+    padding-bottom: 3rem;
+  }
+
+  .jvc-cv-contact-card dl > div,
+  .jvc-cv-entry,
+  .jvc-cv-education,
+  .jvc-cv-publication,
+  .jvc-cv-skills article {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+}
+
 * {
   letter-spacing: 0;
 }
