@@ -430,6 +430,14 @@ body[data-slug="cv"] .page {
   line-height: 1.8;
 }
 
+.jvc-cv-email {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: var(--dark);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.72rem;
+}
+
 .jvc-cv-section {
   padding: 1.5rem 0 4.5rem;
 }
@@ -441,18 +449,18 @@ body[data-slug="cv"] .page {
   font-weight: 600;
 }
 
-.jvc-cv-contact-card dl {
+.jvc-cv-snapshot dl {
   margin: 0;
 }
 
-.jvc-cv-contact-card dl > div {
+.jvc-cv-snapshot dl > div {
   display: grid;
   grid-template-columns: 180px minmax(0, 1fr);
   border-top: 1px solid var(--jvc-hairline);
   padding: 0.72rem 0;
 }
 
-.jvc-cv-contact-card dt,
+.jvc-cv-snapshot dt,
 .jvc-cv-entry-meta,
 .jvc-cv-education time,
 .jvc-cv-publication time,
@@ -462,11 +470,10 @@ body[data-slug="cv"] .page {
   font-size: 0.7rem;
 }
 
-.jvc-cv-contact-card dd {
+.jvc-cv-snapshot dd {
   margin: 0;
 }
 
-.jvc-cv-contact-card a,
 .jvc-cv-publication a {
   color: var(--dark);
 }
@@ -535,6 +542,64 @@ body[data-slug="cv"] .page {
   font-size: 0.62rem;
 }
 
+.jvc-cv-investments article,
+.jvc-cv-writing > a {
+  border-top: 1px solid var(--jvc-hairline);
+  padding: 1.5rem 0;
+}
+
+.jvc-cv-investment-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.jvc-cv-investment-head h3,
+.jvc-cv-writing h3 {
+  margin: 0;
+  font-family: var(--jvc-display-font);
+  font-size: 1.05rem;
+}
+
+.jvc-cv-investment-scope {
+  margin: 0.5rem 0 0;
+  color: var(--dark);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.jvc-cv-investments article > p:not(.jvc-cv-investment-scope),
+.jvc-cv-writing p {
+  margin: 0.65rem 0 0;
+  color: var(--jvc-muted);
+  font-size: 0.9rem;
+  line-height: 1.75;
+}
+
+.jvc-cv-investments .jvc-cv-investment-outcome {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.jvc-cv-writing > a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 2fr auto;
+  gap: 2rem;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.jvc-cv-writing p {
+  margin: 0;
+}
+
+.jvc-cv-writing span {
+  color: var(--cv-accent);
+  font-family: var(--jvc-mono-font);
+  font-size: 0.68rem;
+}
+
 .jvc-cv-skills article {
   display: grid;
   grid-template-columns: 190px 110px minmax(0, 1fr);
@@ -556,13 +621,22 @@ body[data-slug="cv"] .page {
     padding-bottom: 3rem;
   }
 
-  .jvc-cv-contact-card dl > div,
+  .jvc-cv-snapshot dl > div,
   .jvc-cv-entry,
   .jvc-cv-education,
   .jvc-cv-publication,
-  .jvc-cv-skills article {
+  .jvc-cv-skills article,
+  .jvc-cv-writing > a {
     grid-template-columns: 1fr;
     gap: 0.7rem;
+  }
+
+  .jvc-cv-investment-head {
+    display: block;
+  }
+
+  .jvc-cv-investment-head .jvc-cv-tag {
+    margin-top: 0.65rem;
   }
 }
 
