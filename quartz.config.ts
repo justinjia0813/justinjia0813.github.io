@@ -16,7 +16,7 @@ const config: QuartzConfig = {
     locale: "zh-CN",
     baseUrl: "justinjia.si",
     ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "modified",
+    defaultDateType: "published", // frontmatter `date` (aliases: published, publishDate)
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
