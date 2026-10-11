@@ -1,5 +1,5 @@
 import { i18n } from "../i18n"
-import { FullSlug, getFileExtension, joinSegments, pathToRoot } from "../util/path"
+import { FullSlug, getFileExtension, joinSegments, pathToRoot, simplifySlug } from "../util/path"
 import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/resources"
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
@@ -27,13 +27,19 @@ export default (() => {
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
     const iconPath = joinSegments(baseDir, "static/icon.png")
 
-    // Url of current page
-    const socialUrl =
-      fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
-
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
       (e) => e.name === CustomOgImagesEmitterName,
     )
+    // Absolute URL of current page (also used as canonical). Trailing "index" is
+    // stripped so home/folder pages resolve to "/" and "/blogs/", not ".../index".
+    const simple = fileData.slug === "404" ? "/" : simplifySlug(fileData.slug!)
+    const canonicalSlug = simple === "/" ? "" : simple
+    const canonicalUrl = new URL(encodeURI(canonicalSlug), url.toString()).toString()
+
+    // Treat dated pages under blogs/ (excluding folder index pages) as articles
+    const isArticle = !!fileData.slug?.startsWith("blogs/") && !fileData.slug.endsWith("/index")
+    const publishedDate = fileData.dates?.published ?? fileData.dates?.created
+
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
 
     return (
@@ -57,9 +63,12 @@ export default (() => {
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <meta name="og:site_name" content={cfg.pageTitle}></meta>
+        <meta property="og:site_name" content={cfg.pageTitle}></meta>
         <meta property="og:title" content={title} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={isArticle ? "article" : "website"} />
+        {isArticle && publishedDate && (
+          <meta property="article:published_time" content={publishedDate.toISOString()} />
+        )}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
@@ -73,16 +82,17 @@ export default (() => {
             <meta name="twitter:image" content={ogImageDefaultPath} />
             <meta
               property="og:image:type"
-              content={`image/${getFileExtension(ogImageDefaultPath) ?? "png"}`}
+              content={`image/${getFileExtension(ogImageDefaultPath)?.slice(1) ?? "png"}`}
             />
           </>
         )}
 
         {cfg.baseUrl && (
           <>
+            {fileData.slug !== "404" && <link rel="canonical" href={canonicalUrl} />}
             <meta property="twitter:domain" content={cfg.baseUrl}></meta>
-            <meta property="og:url" content={socialUrl}></meta>
-            <meta property="twitter:url" content={socialUrl}></meta>
+            <meta property="og:url" content={canonicalUrl}></meta>
+            <meta property="twitter:url" content={canonicalUrl}></meta>
           </>
         )}
 

@@ -80,6 +80,8 @@ const config: QuartzConfig = {
       Plugin.ContentIndex({
         enableSiteMap: true,
         enableRSS: true,
+        // Include every post in /index.xml instead of Quartz's default of 10
+        rssLimit: undefined,
       }),
       Plugin.Assets(),
       Plugin.Static(),
