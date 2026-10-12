@@ -251,6 +251,15 @@ function addGlobalPageResources(ctx: BuildCtx, componentResources: ComponentReso
 
       document.head.appendChild(rybbitScript);
     `)
+  } else if (cfg.analytics?.provider === "cloudflare") {
+    // Cloudflare Web Analytics beacon (https://developers.cloudflare.com/analytics/web-analytics/)
+    componentResources.afterDOMLoaded.push(`
+      const cfBeacon = document.createElement("script");
+      cfBeacon.src = "https://static.cloudflareinsights.com/beacon.min.js";
+      cfBeacon.defer = true;
+      cfBeacon.setAttribute("data-cf-beacon", '{"token": "${cfg.analytics.token}"}');
+      document.head.appendChild(cfBeacon);
+    `)
   }
 
   if (cfg.enableSPA) {
