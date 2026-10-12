@@ -12,7 +12,10 @@ const config: QuartzConfig = {
     pageTitleSuffix: " | 一级市场投资记录",
     enableSPA: true,
     enablePopovers: true,
-    analytics: null,
+    analytics: {
+      provider: "cloudflare",
+      token: "ef878bf00d314aa5996403a9d6404b39",
+    },
     locale: "zh-CN",
     baseUrl: "justinjia.si",
     ignorePatterns: ["private", "templates", ".obsidian"],
