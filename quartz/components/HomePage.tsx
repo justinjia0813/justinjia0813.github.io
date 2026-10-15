@@ -136,11 +136,6 @@ export default (() => {
                   <a href={at(latestIssue.htmlPath)} data-router-ignore>
                     阅读报告 →
                   </a>
-                  {latestIssue.pdfPath && (
-                    <a href={at(latestIssue.pdfPath)} data-router-ignore download>
-                      下载 PDF ↓
-                    </a>
-                  )}
                 </p>
               </div>
             </div>
