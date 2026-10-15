@@ -40,15 +40,13 @@ test("v2 homepage keeps the articles, tools, and community modules", () => {
   )
 })
 
-test("coordinate-field homepage keeps the approved visual contract", () => {
+test("editorial homepage keeps the coordinate-field motion contract", () => {
   const component = readFileSync(componentPath, "utf8")
   const styles = readFileSync(stylesPath, "utf8")
   const flowScript = readFileSync(flowScriptPath, "utf8")
 
-  assert.match(component, /jvc-home-coordinate-field\.webp/)
   assert.match(component, /jvc-hero-flow/)
   assert.match(component, /HomePage\.afterDOMLoaded = homepageFlowScript/)
-  assert.match(component, /jvc-home-research-thumbnail\.webp/)
   assert.match(component, /研究不是预测答案，而是持续校准坐标/)
   assert.match(styles, /body\[data-slug="index"\]/)
   assert.match(styles, /@keyframes jvc-coordinate-drift/)
@@ -58,4 +56,12 @@ test("coordinate-field homepage keeps the approved visual contract", () => {
   assert.match(flowScript, /pointermove/)
   assert.match(flowScript, /prefers-reduced-motion: reduce/)
   assert.match(flowScript, /window\.addCleanup/)
+})
+
+test("homepage links the Justified Research column", () => {
+  const component = readFileSync(componentPath, "utf8")
+
+  assert.match(component, /id="research"/)
+  assert.match(component, /researchIssues/)
+  assert.match(component, /data-router-ignore/)
 })

@@ -4,6 +4,7 @@ import { QuartzPluginData } from "../plugins/vfile"
 import { byDateAndAlphabetical } from "./PageList"
 import { Date as DateComponent, getDate } from "./Date"
 import { allTools } from "./data/tools"
+import { researchIssues } from "./data/research"
 // @ts-ignore
 import homepageFlowScript from "./scripts/homepageFlow.inline"
 
@@ -18,17 +19,13 @@ export default (() => {
       .filter((file) => file.slug?.startsWith("blogs/"))
       .sort(byDateAndAlphabetical(cfg))
     const [featuredArticle, ...otherArticles] = articles
-    const staticRoot = joinSegments(pathToRoot(fileData.slug!), "static/assets")
+    const root = pathToRoot(fileData.slug!)
+    const at = (p: string) => joinSegments(root, p)
+    const [latestIssue] = researchIssues
 
     return (
       <div class="jvc-home">
         <section class="jvc-home-hero">
-          <img
-            class="jvc-hero-visual"
-            src={joinSegments(staticRoot, "jvc-home-coordinate-field.webp")}
-            alt=""
-            aria-hidden="true"
-          />
           <canvas class="jvc-hero-flow" aria-hidden="true" />
           <div class="jvc-hero-content">
             <p class="jvc-kicker">31.2304° N, 121.4737° E · INDEPENDENT RESEARCH</p>
@@ -42,14 +39,17 @@ export default (() => {
               <a href="#articles">
                 <span class="nav-num">01</span>文章
               </a>
+              <a href="#research">
+                <span class="nav-num">02</span>专栏
+              </a>
               <a href="#tools">
-                <span class="nav-num">02</span>项目/工具
+                <span class="nav-num">03</span>项目/工具
               </a>
               <a href="#community">
-                <span class="nav-num">03</span>社区
+                <span class="nav-num">04</span>社区
               </a>
               <a href="./cv">
-                <span class="nav-num">04</span>CV
+                <span class="nav-num">05</span>CV
               </a>
             </nav>
           </div>
@@ -57,7 +57,7 @@ export default (() => {
 
         <section class="jvc-home-section" id="articles">
           <div class="jvc-section-head">
-            <span class="jvc-section-num">01</span>
+            <span class="jvc-section-num">01 · Notes</span>
             <h2 class="jvc-section-title">最新研究</h2>
             <a class="jvc-section-link" href="./blogs/">
               查看全部文章 →
@@ -68,17 +68,13 @@ export default (() => {
               class="jvc-featured-article"
               href={resolveRelative(fileData.slug!, featuredArticle.slug!)}
             >
-              <img
-                src={joinSegments(staticRoot, "jvc-home-research-thumbnail.webp")}
-                alt=""
-                loading="eager"
-              />
               <div class="jvc-featured-copy">
-                {getDate(cfg, featuredArticle) && (
-                  <span class="jvc-article-meta">
+                <span class="jvc-article-meta">
+                  <span>Featured</span>
+                  {getDate(cfg, featuredArticle) && (
                     <DateComponent date={getDate(cfg, featuredArticle)!} locale={cfg.locale} />
-                  </span>
-                )}
+                  )}
+                </span>
                 <h3 class="jvc-article-title">{featuredArticle.frontmatter?.title ?? "未命名"}</h3>
                 {featuredArticle.frontmatter?.description && (
                   <p class="jvc-article-desc">{featuredArticle.frontmatter.description}</p>
@@ -109,9 +105,51 @@ export default (() => {
           )}
         </section>
 
+        {latestIssue && (
+          <section class="jvc-home-section" id="research">
+            <div class="jvc-section-head">
+              <span class="jvc-section-num">02 · Column</span>
+              <h2 class="jvc-section-title">Justified Research</h2>
+              <a class="jvc-section-link" href="./research/">
+                进入专栏 →
+              </a>
+            </div>
+            <div class="jvc-research-feature">
+              {latestIssue.cover && (
+                <a class="jvc-research-cover" href={at(latestIssue.htmlPath)} data-router-ignore>
+                  <img src={at(latestIssue.cover)} alt="" loading="lazy" />
+                </a>
+              )}
+              <div class="jvc-research-copy">
+                <p class="jvc-article-meta">
+                  <span>{latestIssue.issue}</span>
+                  <span>{latestIssue.topic}</span>
+                  <span>{latestIssue.date}</span>
+                </p>
+                <h3 class="jvc-research-title">
+                  <a href={at(latestIssue.htmlPath)} data-router-ignore>
+                    {latestIssue.title}
+                  </a>
+                </h3>
+                <p class="jvc-article-desc">{latestIssue.abstract}</p>
+                <p class="jvc-research-actions">
+                  <a href={at(latestIssue.htmlPath)} data-router-ignore>
+                    阅读报告 →
+                  </a>
+                  {latestIssue.pdfPath && (
+                    <a href={at(latestIssue.pdfPath)} data-router-ignore download>
+                      下载 PDF ↓
+                    </a>
+                  )}
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
         <section class="jvc-home-section" id="tools">
           <div class="jvc-section-head">
-            <span class="jvc-section-num">02</span>
+            <span class="jvc-section-num">03 · Systems</span>
             <h2 class="jvc-section-title">项目/工具</h2>
             <p class="jvc-section-prompt">WORKING SYSTEMS</p>
           </div>
@@ -131,7 +169,7 @@ export default (() => {
 
         <section class="jvc-home-section" id="community">
           <div class="jvc-section-head">
-            <span class="jvc-section-num">03</span>
+            <span class="jvc-section-num">04 · Community</span>
             <h2 class="jvc-section-title">社区</h2>
             <p class="jvc-section-prompt">OPEN NOTES</p>
           </div>

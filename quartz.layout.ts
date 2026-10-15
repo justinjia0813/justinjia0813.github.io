@@ -8,6 +8,7 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
+      Research: "/research/",
       GitHub: "https://github.com/justinjia0813",
       RSS: "/index.xml",
     },
@@ -19,7 +20,7 @@ export const defaultContentPageLayout: PageLayout = {
   beforeBody: [
     Component.ConditionalRender({
       component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
+      condition: (page) => !["index", "cv", "research/index"].includes(page.fileData.slug!),
     }),
     Component.ConditionalRender({
       component: Component.HomePage(),
@@ -31,11 +32,11 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.ConditionalRender({
       component: Component.ArticleTitle(),
-      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
+      condition: (page) => !["index", "cv", "research/index"].includes(page.fileData.slug!),
     }),
     Component.ConditionalRender({
       component: Component.ContentMeta(),
-      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
+      condition: (page) => !["index", "cv", "research/index"].includes(page.fileData.slug!),
     }),
   ],
   left: [
@@ -55,14 +56,34 @@ export const defaultContentPageLayout: PageLayout = {
   right: [
     Component.ConditionalRender({
       component: Component.DesktopOnly(Component.TableOfContents()),
-      condition: (page) => page.fileData.slug !== "index" && page.fileData.slug !== "cv",
+      condition: (page) => !["index", "cv", "research/index"].includes(page.fileData.slug!),
     }),
   ],
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
+const isResearchColumn = (page: { fileData: { slug?: string } }) =>
+  page.fileData.slug === "research/index"
+
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+    Component.ConditionalRender({
+      component: Component.ResearchPage(),
+      condition: isResearchColumn,
+    }),
+    Component.ConditionalRender({
+      component: Component.Breadcrumbs(),
+      condition: (page) => !isResearchColumn(page),
+    }),
+    Component.ConditionalRender({
+      component: Component.ArticleTitle(),
+      condition: (page) => !isResearchColumn(page),
+    }),
+    Component.ConditionalRender({
+      component: Component.ContentMeta(),
+      condition: (page) => !isResearchColumn(page),
+    }),
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
