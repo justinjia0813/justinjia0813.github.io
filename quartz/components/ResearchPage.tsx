@@ -39,7 +39,7 @@ export default (() => {
           <div class="jr-meta">
             <span>Long-form · 行业深度</span>
             <span>{researchIssues.length} Issue</span>
-            <span>HTML · PDF</span>
+            <span>HTML</span>
           </div>
         </header>
 
@@ -82,11 +82,6 @@ export default (() => {
                   <a class="jr-btn jr-btn-primary" href={at(issue.htmlPath)} data-router-ignore>
                     阅读 HTML 版 →
                   </a>
-                  {issue.pdfPath && (
-                    <a class="jr-btn" href={at(issue.pdfPath)} data-router-ignore download>
-                      下载 {issue.pdfSize ?? "PDF"} ↓
-                    </a>
-                  )}
                 </p>
               </div>
             </article>
