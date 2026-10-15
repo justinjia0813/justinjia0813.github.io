@@ -46,7 +46,10 @@ document.addEventListener("nav", () => {
 
   const drawFrame = (time: number, advance: boolean) => {
     context.clearRect(0, 0, width, height)
-    context.globalCompositeOperation = "lighter"
+    context.globalCompositeOperation = "source-over"
+    // Ink strokes on paper; switch to paper-coloured strokes in dark mode
+    const ink =
+      document.documentElement.getAttribute("saved-theme") === "dark" ? "242, 236, 227" : "48, 51, 47"
     context.lineCap = "round"
 
     pointer.x += (pointer.targetX - pointer.x) * 0.14
@@ -76,8 +79,8 @@ document.addEventListener("nav", () => {
       context.lineTo(particle.x, particle.y)
       context.lineWidth = particle.warm ? 0.65 : 0.8 + influence * 0.65
       context.strokeStyle = particle.warm
-        ? `rgba(232, 211, 170, ${0.12 + influence * 0.25})`
-        : `rgba(112, 219, 199, ${0.15 + influence * 0.44})`
+        ? `rgba(196, 119, 90, ${0.22 + influence * 0.4})`
+        : `rgba(${ink}, ${0.1 + influence * 0.35})`
       context.stroke()
 
       if (!advance) continue
@@ -99,9 +102,9 @@ document.addEventListener("nav", () => {
         pointer.y,
         Math.min(180, width * 0.13),
       )
-      glow.addColorStop(0, `rgba(118, 225, 206, ${0.09 * pointer.strength})`)
-      glow.addColorStop(0.45, `rgba(96, 205, 189, ${0.035 * pointer.strength})`)
-      glow.addColorStop(1, "rgba(55, 164, 151, 0)")
+      glow.addColorStop(0, `rgba(196, 119, 90, ${0.05 * pointer.strength})`)
+      glow.addColorStop(0.45, `rgba(196, 119, 90, ${0.02 * pointer.strength})`)
+      glow.addColorStop(1, "rgba(196, 119, 90, 0)")
       context.fillStyle = glow
       context.fillRect(0, 0, width, height)
     }
