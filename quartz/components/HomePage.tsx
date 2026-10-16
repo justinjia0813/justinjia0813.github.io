@@ -5,8 +5,6 @@ import { byDateAndAlphabetical } from "./PageList"
 import { Date as DateComponent, getDate } from "./Date"
 import { allTools } from "./data/tools"
 import { researchIssues } from "./data/research"
-// @ts-ignore
-import homepageFlowScript from "./scripts/homepageFlow.inline"
 
 export default (() => {
   const HomePage: QuartzComponent = ({ fileData, allFiles, cfg }: QuartzComponentProps) => {
@@ -14,7 +12,7 @@ export default (() => {
       return null
     }
 
-    // 文章：仅取 blogs/ 下已发布文章，按日期倒序
+    // 博客：仅取 blogs/ 下已发布文章，按日期倒序
     const articles: QuartzPluginData[] = allFiles
       .filter((file) => file.slug?.startsWith("blogs/"))
       .sort(byDateAndAlphabetical(cfg))
@@ -26,24 +24,26 @@ export default (() => {
     return (
       <div class="jvc-home">
         <section class="jvc-home-hero">
-          <canvas class="jvc-hero-flow" aria-hidden="true" />
           <div class="jvc-hero-content">
-            <p class="jvc-kicker">31.2304° N, 121.4737° E · INDEPENDENT RESEARCH</p>
-            <h1 class="jvc-hero-title">Justin / JVC Notes</h1>
-            <p class="jvc-hero-copy">
-              <strong>一级市场投资记录</strong>
-              <span>持续递归优化物质、能量、信息三大本源</span>
-            </p>
-            <p class="jvc-hero-thesis">研究不是预测答案，而是持续校准坐标。</p>
+            <img
+              class="jvc-hero-pixel"
+              src={at("static/assets/jr-home-pixel-hero.webp")}
+              alt="Justified Research pixel art"
+              width="1280"
+              height="720"
+              loading="eager"
+              decoding="async"
+            />
+            <p class="jvc-hero-tagline">持续递归优化物质、能量、信息三大本源</p>
             <nav class="jvc-home-nav" aria-label="首页分区">
               <a href="#articles">
-                <span class="nav-num">01</span>文章
+                <span class="nav-num">01</span>博客
               </a>
               <a href="#research">
                 <span class="nav-num">02</span>专栏
               </a>
               <a href="#tools">
-                <span class="nav-num">03</span>项目/工具
+                <span class="nav-num">03</span>项目
               </a>
               <a href="#community">
                 <span class="nav-num">04</span>社区
@@ -57,10 +57,10 @@ export default (() => {
 
         <section class="jvc-home-section" id="articles">
           <div class="jvc-section-head">
-            <span class="jvc-section-num">01 · Notes</span>
-            <h2 class="jvc-section-title">最新研究</h2>
+            <span class="jvc-section-num">01 · Blog</span>
+            <h2 class="jvc-section-title">最新博客</h2>
             <a class="jvc-section-link" href="./blogs/">
-              查看全部文章 →
+              查看全部博客 →
             </a>
           </div>
           {featuredArticle && (
@@ -79,7 +79,7 @@ export default (() => {
                 {featuredArticle.frontmatter?.description && (
                   <p class="jvc-article-desc">{featuredArticle.frontmatter.description}</p>
                 )}
-                <span class="jvc-article-action">研究笔记 · 阅读全文 →</span>
+                <span class="jvc-article-action">阅读全文 →</span>
               </div>
             </a>
           )}
@@ -109,7 +109,7 @@ export default (() => {
           <section class="jvc-home-section" id="research">
             <div class="jvc-section-head">
               <span class="jvc-section-num">02 · Column</span>
-              <h2 class="jvc-section-title">Justified Research</h2>
+              <h2 class="jvc-section-title">最新专栏</h2>
               <a class="jvc-section-link" href="./research/">
                 进入专栏 →
               </a>
@@ -144,8 +144,8 @@ export default (() => {
 
         <section class="jvc-home-section" id="tools">
           <div class="jvc-section-head">
-            <span class="jvc-section-num">03 · Systems</span>
-            <h2 class="jvc-section-title">项目/工具</h2>
+            <span class="jvc-section-num">03 · Projects</span>
+            <h2 class="jvc-section-title">最新项目</h2>
             <p class="jvc-section-prompt">WORKING SYSTEMS</p>
           </div>
           <div class="jvc-tool-grid">
@@ -166,35 +166,18 @@ export default (() => {
           <div class="jvc-section-head">
             <span class="jvc-section-num">04 · Community</span>
             <h2 class="jvc-section-title">社区</h2>
-            <p class="jvc-section-prompt">OPEN NOTES</p>
           </div>
-          <div class="jvc-community-grid">
-            <div class="jvc-os">
-              <div class="jvc-os-item">
-                <h3>RESEARCH & THINK</h3>
-                <p>行业判断 · 宏观框架 · 反方验证 · 第一性原理</p>
-              </div>
-              <div class="jvc-os-item">
-                <h3>ANALYZE & OPERATE</h3>
-                <p>公司观察 · 投资备忘 · 复盘 · 决策记录</p>
-              </div>
-            </div>
-            <div class="jvc-contact">
-              <p class="jvc-contact-prompt">CONTACT</p>
-              <a href="mailto:justinjia0813@gmail.com">EMAIL · justinjia0813@gmail.com</a>
-              <a href="https://github.com/justinjia0813" target="_blank" rel="noopener">
-                GITHUB · github.com/justinjia0813
-              </a>
-              <p class="jvc-quote">“找到你喜欢的事，然后让它杀死你。” — Bukowski</p>
-            </div>
+          <div class="jvc-contact">
+            <a href="mailto:justinjia0813@gmail.com">EMAIL · justinjia0813@gmail.com</a>
+            <a href="https://github.com/justinjia0813" target="_blank" rel="noopener">
+              GITHUB · github.com/justinjia0813
+            </a>
           </div>
-          <p class="jvc-copyright">© 2026 Justin / JVC Notes · Built with AI & attitude</p>
+          <p class="jvc-copyright">© 2026 Justified Research · justinjia.si</p>
         </section>
       </div>
     )
   }
-
-  HomePage.afterDOMLoaded = homepageFlowScript
 
   return HomePage
 }) satisfies QuartzComponentConstructor
