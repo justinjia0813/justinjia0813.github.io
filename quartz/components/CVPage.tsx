@@ -446,7 +446,7 @@ export default (() => {
     return (
       <div class="jvc-cv">
         <div class="jvc-cv-toolbar">
-          <a href="../">← JVC Notes</a>
+          <a href="../">← Justified Research</a>
           <div class="jvc-cv-language-switch" aria-label="Language">
             <button type="button" data-cv-lang="zh" aria-pressed="true">
               中文
