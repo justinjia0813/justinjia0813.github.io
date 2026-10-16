@@ -183,13 +183,22 @@ button:focus-visible {
 }
 
 .page-title .site-logo {
-  width: 78px;
+  width: 168px;
+  max-width: min(168px, 46vw);
+  height: auto;
   margin: 0;
-  color: var(--jr-ink);
 }
 
-.page-title .site-logo path {
-  stroke: var(--jr-accent);
+.page-title .site-logo-dark {
+  display: none;
+}
+
+:root[saved-theme="dark"] .page-title .site-logo-light {
+  display: none;
+}
+
+:root[saved-theme="dark"] .page-title .site-logo-dark {
+  display: block;
 }
 
 .left.sidebar .flex-component {
@@ -628,64 +637,35 @@ body[data-slug="index"] .jvc-home {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: min(640px, calc(100svh - 4.4rem));
+  min-height: min(560px, calc(100svh - 4.4rem));
   overflow: hidden;
   border-bottom: 1px solid var(--jr-hair);
   isolation: isolate;
 }
 
-.jvc-hero-flow {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  opacity: 0.55;
-  pointer-events: none;
-}
-
 .jvc-hero-content {
-  width: min(880px, 90vw);
-  padding: 5.5rem 0 4.5rem;
+  width: min(920px, 90vw);
+  padding: 3.2rem 0 3.6rem;
   text-align: center;
 }
 
-.jvc-kicker {
-  @include jr-label;
-  margin: 0 0 2.4rem;
-  font-size: 0.7rem;
+.jvc-hero-pixel {
+  display: block;
+  width: min(820px, 100%);
+  height: auto;
+  margin: 0 auto;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border: 1px solid var(--jr-hair);
+  background: var(--jr-paper, transparent);
 }
 
-.jvc-hero-title {
-  margin: 0;
-  color: var(--jr-ink2);
-  font-family: var(--jr-serif);
-  font-size: clamp(3.2rem, 7.4vw, 6rem);
-  line-height: 1.04;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-}
-
-.jvc-hero-copy {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.2rem 1rem;
-  margin: 2rem auto 0;
+.jvc-hero-tagline {
+  margin: 1.8rem auto 0;
+  max-width: 36em;
   color: var(--jr-soft);
-  font-size: 1.12rem;
+  font-size: 1.08rem;
   line-height: 1.7;
-}
-
-.jvc-hero-copy strong {
-  color: var(--jr-ink);
-  font-weight: 400;
-}
-
-.jvc-hero-thesis {
-  margin: 1.4rem auto 0;
-  color: var(--jr-muted);
-  font-size: 0.98rem;
 }
 
 .jvc-home-nav {
@@ -960,40 +940,12 @@ body[data-slug="index"] .jvc-home {
   color: var(--jr-accent);
 }
 
-// Community
-.jvc-community-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 3rem;
-}
-
-.jvc-os-item {
-  padding: 0 0 1.4rem;
-  margin-bottom: 1.4rem;
-  border-bottom: 1px solid var(--jr-hair);
-}
-
-.jvc-os-item h3 {
-  margin: 0 0 0.5rem;
-  @include jr-label;
-  color: var(--jr-ink);
-}
-
-.jvc-os-item p {
-  margin: 0;
-  color: var(--jr-soft);
-  font-size: 0.95rem;
-}
-
+// Community — contacts only
 .jvc-contact {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
-
-.jvc-contact-prompt {
-  margin: 0 0 0.2rem;
-  @include jr-label;
+  gap: 0.85rem;
+  max-width: 36rem;
 }
 
 .jvc-contact a {
@@ -1012,13 +964,6 @@ body[data-slug="index"] .jvc-home {
   border-color: var(--jr-accent);
 }
 
-.jvc-quote {
-  margin: 1rem 0 0;
-  color: var(--jr-muted);
-  font-style: italic;
-  font-size: 0.92rem;
-}
-
 .jvc-copyright {
   margin: 5rem 0 0;
   padding-top: 1.2rem;
@@ -1033,30 +978,11 @@ body[data-slug="index"] footer {
   border-top: 0;
 }
 
-// gentle drift for the hero field when motion is allowed
-@keyframes jvc-coordinate-drift {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    transform: translate3d(-0.6%, -0.4%, 0);
-  }
-}
-
-.jvc-hero-flow {
-  animation: jvc-coordinate-drift 24s ease-in-out infinite alternate;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .jvc-hero-flow,
   .jvc-tool-card,
   a {
     animation: none;
     transition: none;
-  }
-
-  .jvc-hero-flow {
-    opacity: 0.35;
   }
 }
 
@@ -1587,7 +1513,7 @@ body[data-slug="cv"] .right.sidebar {
   }
 
   .page-title .site-logo {
-    width: 66px;
+    width: 132px;
   }
 
   .search-button p {
@@ -1616,17 +1542,11 @@ body[data-slug="cv"] .right.sidebar {
   }
 
   .jvc-hero-content {
-    padding: 4rem 0 3rem;
+    padding: 2.4rem 0 2.8rem;
   }
 
-  .jvc-kicker {
-    font-size: 0.6rem;
-    margin-bottom: 1.8rem;
-  }
-
-  .jvc-hero-copy {
-    flex-direction: column;
-    font-size: 1rem;
+  .jvc-hero-tagline {
+    font-size: 0.98rem;
   }
 
   .jvc-home-nav {
@@ -1667,7 +1587,6 @@ body[data-slug="cv"] .right.sidebar {
 
   .jvc-article-grid,
   .jvc-tool-grid,
-  .jvc-community-grid,
   .jvc-research-feature,
   .jr-issue,
   .jvc-cv-snapshot dl,
@@ -1690,10 +1609,6 @@ body[data-slug="cv"] .right.sidebar {
   .jvc-research-title,
   .jr-issue-title {
     font-size: 1.6rem;
-  }
-
-  .jvc-community-grid {
-    row-gap: 2.4rem;
   }
 
   .jr-column {
