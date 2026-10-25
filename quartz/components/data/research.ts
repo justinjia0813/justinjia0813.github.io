@@ -14,6 +14,23 @@ export interface ResearchIssue {
 
 export const researchIssues: ResearchIssue[] = [
   {
+    issue: "No. 02",
+    title: "谁拥有标签，飞轮就在谁那里",
+    subtitle: "AI4M 的数据、模型、飞轮与自主实验室 · 学习笔记",
+    topic: "AI4M · 概念框架",
+    date: "2026-10",
+    abstract:
+      "AI4M 的竞争正在从「谁的模型更好」转向「谁拥有带标签的真实数据」。公开与计算数据变成人人都有的底座，通用原子模型被开源拉平；可留存的价值在私有数据校准的专用模型、承载领域规则与验证器的 harness，以及能低成本生产带过程与失败数据的自主实验室。",
+    htmlPath: "research/ai4m/02/",
+    cover: "static/research/ai4m-02-flywheel.png",
+    kpis: [
+      ["3", "条正交轴给数据定位"],
+      ["6", "层技术栈，从大模型到执行层"],
+      ["2", "个飞轮，只有一个必然转得起来"],
+      ["7", "个自主实验室壁垒"],
+    ],
+  },
+  {
     issue: "No. 01",
     title: "AI for Materials：从“算得准”到“做得出”",
     subtitle: "AI4M（AI for Materials，AI 驱动材料研发）行业深度研究",
