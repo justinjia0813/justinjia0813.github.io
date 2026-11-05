@@ -14,6 +14,23 @@ export interface ResearchIssue {
 
 export const researchIssues: ResearchIssue[] = [
   {
+    issue: "No. 03",
+    title: "材料 AI 的算法地图与未来三年的演进",
+    subtitle: "AI for Materials 的核心算法与趋势",
+    topic: "AI4M · 算法与趋势",
+    date: "2026-11",
+    abstract:
+      "材料 AI 的算法可以按六类映射来组织：势能面、性质预测、电子结构、逆向设计、合成规划和序贯决策，大语言模型横跨其中。2024 到 2026 年进展最快的是机器学习势和电子结构的机器学习，最慢的是合成规划；评价方法的变化在多个方向上比模型结构的变化更快。未来三年，对称性、精度阶梯和不确定性三件事会决定大多数方向的算法设计。",
+    htmlPath: "research/ai4m/03/",
+    cover: "static/research/ai4m-03-algorithms.png",
+    kpis: [
+      ["6", "类映射，组织材料 AI 的全部算法"],
+      ["0.913", "Matbench Discovery 榜首综合分（2026-10-31）"],
+      ["2.8", "kcal/mol，Skala 泛函在 GMTKN55 上的误差"],
+      ["8", "条 2026–2028 年跨领域算法趋势"],
+    ],
+  },
+  {
     issue: "No. 02",
     title: "谁拥有标签，飞轮就在谁那里",
     subtitle: "AI4M 的数据、模型、飞轮与自主实验室 · 学习笔记",
