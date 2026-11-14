@@ -18,6 +18,8 @@ test("homepage keeps blogs, column, projects, and community modules", () => {
   assert.match(component, /span>博客/)
   assert.match(component, /span>专栏/)
   assert.match(component, /span>项目\n/)
+  assert.doesNotMatch(component, /href="\.\/cv"/)
+  assert.doesNotMatch(component, /nav-num">05<\/span>CV/)
   assert.match(component, /最新博客/)
   assert.match(component, /最新专栏/)
   assert.match(component, /最新项目/)
