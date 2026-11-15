@@ -24,7 +24,6 @@ import Comments from "./Comments"
 import Flex from "./Flex"
 import ConditionalRender from "./ConditionalRender"
 import HomePage from "./HomePage"
-import CVPage from "./CVPage"
 import ResearchPage from "./ResearchPage"
 
 export {
@@ -54,6 +53,5 @@ export {
   Flex,
   ConditionalRender,
   HomePage,
-  CVPage,
   ResearchPage,
 }
